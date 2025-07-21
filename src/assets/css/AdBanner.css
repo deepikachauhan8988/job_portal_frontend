@@ -1,0 +1,25 @@
+.ad-banner {
+  width: 100%;
+  max-width: 728px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  text-align: center;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ad-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #888;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.ad-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}

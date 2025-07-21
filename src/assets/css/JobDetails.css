@@ -1,0 +1,70 @@
+.job-page-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.job-header h2 {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.job-header h5 {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.job-tags span {
+  display: inline-block;
+  margin-right: 15px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.highlight-box {
+  background: #f1f7ff;
+  border-left: 4px solid #007bff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+.highlight-box ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.match-score {
+  margin-top: 25px;
+}
+
+.match-tags .badge {
+  margin: 5px 10px 5px 0;
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 50px;
+}
+
+.job-desc {
+  margin-top: 30px;
+}
+
+.job-desc ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.job-skills {
+  margin-top: 25px;
+}
+
+.skills-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}

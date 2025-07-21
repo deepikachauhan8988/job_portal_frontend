@@ -1,0 +1,46 @@
+.register-box {
+  background: #fff;
+  padding: 40px;
+  margin-top: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.input-custom {
+  border-radius: 12px;
+  height: 44px;
+  font-size: 15px;
+}
+
+.google-btn {
+  border-radius: 30px;
+  height: 45px;
+  border: 1px solid #ccc;
+  font-weight: 500;
+  /* background-color: #fff; */
+}
+
+.vertical-divider {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+.work-card {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: 0.3s ease;
+}
+
+/* .work-card:hover,
+.work-card.active {
+  border-color: #1a73e8;
+  background-color: #f0f7ff;
+} */

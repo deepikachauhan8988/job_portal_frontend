@@ -1,0 +1,11 @@
+
+.educat-desin{
+  background-color: var(--brjp-blue-light-bg) !important;
+  color: var(--brjp-black);
+  padding: var(--brjp-space-100) var(--brjp-space-600) var(--brjp-space-100) var(--brjp-space-600);
+}
+.jp-feilds-design{
+  background-color: var(--brjp-blue-light-bg) !important;
+  color: var(--brjp-black);
+  padding: var(--brjp-space-100) var(--brjp-space-600) var(--brjp-space-100) var(--brjp-space-600);
+}

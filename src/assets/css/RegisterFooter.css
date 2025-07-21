@@ -1,0 +1,20 @@
+.register-footer {
+  padding-top: 10px;
+}
+
+.register-btn {
+  background-color: #dbe5f9;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-weight: 500;
+  color: #fff;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.regiter-btn{
+ border: 0 !important;
+}
+.text-decoration-none1 a{
+    text-decoration: none !important;
+}

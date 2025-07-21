@@ -1,0 +1,72 @@
+.login-box {
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  margin-top: 50px;
+}
+
+.input-custom {
+  border-radius: 30px !important;
+  height: 45px;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #1a73e8;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.show-password-btn {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #1a73e8;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-login {
+  border-radius: 30px;
+  height: 45px;
+  background-color: #1a73e8;
+  border: none;
+  font-weight: 600;
+}
+
+.google-btn {
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  height: 45px;
+  font-weight: 500;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider span {
+  margin: 0 10px;
+  color: #888;
+}

@@ -1,0 +1,40 @@
+.job-form-container {
+  background-color: #ffffff;
+  padding: 40px;
+  margin-top: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.job-form-container h2 {
+  color: #198754;
+  /* Bootstrap success green */
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #333;
+}
+
+.form-control,
+.form-select {
+  border-radius: 10px;
+  font-size: 12px;
+  border: 1px solid #ced4da;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+button[type="submit"] {
+  padding: 10px 40px;
+  font-size: 16px;
+  border-radius: 30px;
+}

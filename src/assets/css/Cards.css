@@ -1,0 +1,15 @@
+.card-custom {
+  border: none;
+  border-radius: var(--brjp-space-500);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-custom:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.card-icon {
+  font-size: var(--brjp-space-1000);
+}

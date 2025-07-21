@@ -1,0 +1,347 @@
+/* body {
+    margin: 0;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    backgrouawc-color: var(--bs-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    backgrouawc-color: var(--awc-blue-light-bg);
+  } */
+
+/* svg {
+      fill: #0d77cb;
+    } */
+:root {
+  --bs-breakpoint-xs: 0;
+  --bs-breakpoint-sm: 576px;
+  --bs-breakpoint-md: 768px;
+  --bs-breakpoint-lg: 992px;
+  --bs-breakpoint-xl: 1200px;
+  --bs-breakpoint-xxl: 1400px;
+}
+
+:root {
+  --awc-white: #ffffff;
+  --awc-black: #000000;
+  --awc-Primary: #ED3338;
+  --awc-red: #ff0000;
+  --awc-red-dark: #ac0a0f;
+  --awc-seconadry: #a0a0a0;
+  --awc-seconadry-hover: #807d7d;
+  --awc-primary-hover: #cd1d22;
+  --awc-blue-hover: #1d529e;
+  --awc-blue-bg: #1976d2;
+  --awc-primary-off-white: #EFF0F2;
+  --awc-gray-off: #767676;
+  --awc-dark-gray: #4a525a;
+  --awc-blue-off: #5886FF;
+  --awc-blue-dark-bg: #0F1A34;
+  --awc-main-primary-blue: #1a73e8
+ ;
+  --awc-gray-light-bg: #b4b4b4;
+  --awc-blue-light-bg: #4f8ecc;
+
+
+
+
+  --awc-blue: #1976D2;
+  --awc-border: #B9C9D3;
+  --awc-off-black: #154351;
+  --awc-blue-light-bg: #E0EEFB;
+  --awc-blue-bg: #0B62BB;
+  --awc-blue-hover: #0b5ed7;
+  --awc-orange: #EA9343;
+  --awc-orange-border: #f9b115;
+  --awc-green-border: #59822c;
+  --awc-button-bg: #87BE7E;
+  --awc-green-off: #87BE7E;
+  --awc-gray: #444a50;
+  --awc-blue-dark: #152036;
+  --awc-bg-green: #278557;
+
+
+
+  /* custom padding aawc margin*/
+  --awc-space-0: 0px;
+  --awc-space-25: 1px;
+  --awc-space-50: 2px;
+  --awc-space-100: 4px;
+  --awc-space-175: 5px;
+  --awc-space-150: 6px;
+  --awc-space-200: 8px;
+  --awc-space-250: 10px;
+  --awc-space-300: 12px;
+  --awc-space-350: 14px;
+  --awc-space-400: 16px;
+  --awc-space-450: 18px;
+  --awc-space-500: 20px;
+  --awc-space-550: 22px;
+  --awc-space-600: 24px;
+  --awc-space-650: 25px;
+  --awc-space-700: 28px;
+  --awc-space-750: 30px;
+  --awc-space-800: 32px;
+  --awc-space-900: 36px;
+  --awc-space-950: 36px;
+  --awc-space-1000: 40px;
+  --awc-space-1100: 44px;
+  --awc-space-1200: 48px;
+}
+
+/* .awc-p{
+    margin: -3px;
+  } */
+
+  .dropdown-arrow{
+    font-size: var(--awc-space-500) !important;
+
+  }
+.modal-footer {
+  justify-content: center !important;
+}
+
+.dhan-parwa-logo {
+
+  max-width: 140px;
+}
+
+
+.shadow1 {
+  box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.10);
+}
+
+.awc-form-box p {
+  font-size: var(--awc-space-300);
+  color: var(--awc-red);
+}
+
+.awc-login-col {
+  padding: var(--awc-space-0);
+}
+
+.awc-nav a {
+  text-decoration: none;
+}
+
+.awc-logout {
+  font-size: var(--awc-space-400);
+}
+
+.awc-control-chooce {
+  background-color: var(--awc-gray-light-bg);
+
+}
+
+.table-responsive-lg {
+  overflow: auto;
+}
+
+.awc-pading-next {
+  display: flex;
+  justify-content: end;
+
+}
+
+.tech-staff-perviose {
+  font-size: var(--awc-space-300);
+
+}
+
+ul.awc-paging.pagination .page-item {
+  font-size: var(--awc-space-100);
+}
+
+.page-link {
+  font-size: var(--awc-space-250);
+  color: var(--awc-black);
+}
+
+
+
+.awc-m-t {
+  margin-top: var(--awc-space-200);
+}
+
+.awc-table-head {
+  padding: var(--awc-space-50) var(--awc-space-50) var(--awc-space-50) var(--awc-space-50);
+}
+
+.awc-table-head h1 {
+  font-size: var(--awc-space-00);
+  color: var(--awc-black);
+}
+
+.awc-table-head p {
+  font-size: var(--awc-space-300);
+  color: var(--awc-black);
+  padding-bottom: var(--awc-space-0) !important;
+  margin-bottom: var(--awc-space-0) !important;
+}
+
+.custom-divider {
+  border-top: var(--awc-space-50) dashed #B8B8B8 !important;
+  opacity: 1;
+}
+
+.dpo-accordin-top {
+  margin-top: var(--awc-space-300);
+}
+
+
+.awc-btn-copy {
+  font-size: 12px;
+  padding: 6px 12px 6px 12px;
+  background-color: var(--awc-blue-dark-bg);
+  color: var(--awc-white);
+  border: none;
+  margin-right: var(--awc-space-300);
+}
+
+.awc-btn-copy:hover {
+  color: var(--awc-white);
+  /* background-color: #dd791d; */
+}
+
+.awc-btn-money {
+  font-size: var(--awc-space-400);
+  background-color: transparent;
+  border: none;
+  padding: 0px;
+}
+
+.awc-btn-money:hover {
+  background-color: transparent;
+  border: none;
+
+}
+
+
+button.awc-btn-money.btn.btn-primary {
+  background-color: transparent;
+}
+
+.awc-view-file {
+  color: var(--awc-blue-dark-bg);
+  padding: 0px;
+}
+
+.finance-m-top {
+  margin-top: var(--awc-space-100);
+}
+
+.close-icon {
+  font-size: var(--awc-space-450);
+  color: var(--awc-Primary);
+}
+
+.awc-btn-bill {
+  text-align: left;
+}
+
+.aws-accordion {
+  display: flex;
+  justify-content: space-between;
+}
+.text1{
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 568px) {
+  .awc-btn-bill{
+text-align: center !important;
+margin-bottom: var(--awc-space-300);
+  }
+  .dash-mob {
+    padding-top: var(--awc-space-200);
+  }
+ 
+  .awc-dpo-icon-finace {
+    display: none;
+  }
+
+  .wced-logo {
+    display: none;
+  }
+
+  .uk-logo {
+    display: none;
+  }
+
+  .awc-pading-next {
+    display: flex;
+    justify-content: start;
+
+  }
+
+  .m-t-0 {
+    margin-top: var(--awc-space-0) !important;
+  }
+
+  .form-check {
+    margin-top: var(--awc-space-200);
+  }
+
+  .form-check1 {
+    padding-top: var(--awc-space-0) !important;
+  }
+
+  .awc-home {
+    display: none;
+  }
+
+  .awc-table-head {
+    padding: var(--awc-space-300) var(--awc-space-200) var(--awc-space-0) var(--awc-space-200);
+  }
+
+  .awc-contact-border {
+    border: none !important;
+  }
+
+  img.logo1 {
+    width: 45px;
+    display: none;
+  }
+
+  .search {
+    width: 115px !important;
+  }
+
+  .awc-form-box {
+    padding: var(--awc-space-0) !important;
+  }
+/* 
+  .awc-staff-mobresp {
+    display: block !important;
+  } */
+
+  .awc-after-fillter {
+    padding: var(--awc-space-0) !important;
+  }
+
+  .awc-banner-p {
+    padding-right: var(--awc-space-0) !important;
+  }
+
+  .biil-submit {
+
+    padding: var(--awc-space-200) var(--awc-space-300) var(--awc-space-300) var(--awc-space-300);
+    text-align: center !important;
+  }
+
+  .finance-m-top {
+    margin-top: var(--awc-space-0);
+  }
+
+  .dpo-data1 {
+    height: auto !important;
+  }
+
+  .dpo-data {
+    padding-bottom: var(--awc-space-200) !important;
+  }
+}

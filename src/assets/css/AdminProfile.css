@@ -1,0 +1,19 @@
+.admin-profile-card {
+  border-radius: 16px;
+  background-color: #fff;
+  border: none;
+}
+
+.admin-profile-card p {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.admin-profile-card hr {
+  margin: 30px 0;
+}
+
+.btn-sm {
+  font-size: 13px;
+  padding: 4px 10px;
+}
