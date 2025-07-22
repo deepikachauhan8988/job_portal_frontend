@@ -11,48 +11,52 @@ const TraningRaact = () => {
             {/* Left Column (Accordion) */}
             <Col md={8} sm={12} className="mb-4">
               <Card>
-                <h3 className="section-heading">📚 Training Modules</h3>
+                <h3 className="section-heading">📚 React Training Program </h3>
                 <Accordion defaultActiveKey="0" flush alwaysOpen>
                   <Accordion.Item eventKey="0">
-                    <Accordion.Header>Module 1: React Basics</Accordion.Header>
+                    <Accordion.Header>1. Introduction to React</Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
-                          <p>
-                            Learn the foundation of React including JSX,
-                            components, props, and state. Understand how to
-                            build basic UI elements using reusable components.
-                          </p>
+                        <ul>
+                          <li>What is React? </li>
+                          <li>Why React? (Benefits & Use Cases) </li>
+                          <li>Setting up React environment (Node.js, npm, create-react-app) </li>
+                        </ul>
                         </Card.Body>
                       </Card>
                     </Accordion.Body>
                   </Accordion.Item>
 
                   <Accordion.Item eventKey="1">
-                    <Accordion.Header>Module 2: State & Hooks</Accordion.Header>
+                    <Accordion.Header>2. React Fundamentals </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
-                          <p>
-                            Dive deeper into functional components with{" "}
-                            <code>useState</code>, <code>useEffect</code>, and
-                            building your own custom hooks for cleaner logic.
-                          </p>
+                          <ul>
+                            <li>Components: Functional vs Class Components </li>
+                            <li>JSX (JavaScript XML) </li>
+                            <li>Props and State </li>
+                            <li>Handling Events </li>
+                            <li>Conditional Rendering </li>
+                            <li>Lists and Keys </li>
+                          </ul>
                         </Card.Body>
                       </Card>
                     </Accordion.Body>
                   </Accordion.Item>
 
                   <Accordion.Item eventKey="2">
-                    <Accordion.Header>Module 3: Routing</Accordion.Header>
+                    <Accordion.Header> 3. React Hooks (Modern React)</Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
-                          <p>
-                            Set up navigation using React Router. Learn about
-                            route parameters, nested routes, and protected
-                            pages.
-                          </p>
+                          <ul>
+                            <li>Introduction to Hooks </li>
+                            <li>useState, useEffect </li>
+                            <li>useRef, useContext, useReducer </li>
+                            <li>Custom Hooks </li>
+                          </ul>
                         </Card.Body>
                       </Card>
                     </Accordion.Body>
@@ -60,16 +64,151 @@ const TraningRaact = () => {
 
                   <Accordion.Item eventKey="3">
                     <Accordion.Header>
-                      Module 4: APIs with Axios
+                     4. Routing in React
                     </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
-                          <p>
-                            Make API calls using Axios. Practice with GET, POST,
-                            and form submissions while handling loading and
-                            error states.
-                          </p>
+                          <ul>
+                            <li>React Router basics </li>
+                            <li>Dynamic Routing </li>
+                            <li>Navigation & Redirects </li>
+                          </ul>
+                        </Card.Body>
+                      </Card>
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                  <Accordion.Item eventKey="4">
+                    <Accordion.Header>
+                      5. Styling in React
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <Card className="module-card">
+                        <Card.Body>
+                          <ul>
+                            <li>CSS Modules </li>
+                            <li>Styled Components </li>
+                            <li>Tailwind CSS with React </li>
+                          </ul>
+                        </Card.Body>
+                      </Card>
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                  <Accordion.Item eventKey="5">
+                    <Accordion.Header>
+                       6. Forms and Validation
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <Card className="module-card">
+                        <Card.Body>
+                          <ul>
+                            <li>Controlled vs Uncontrolled Components </li>
+                            <li>Form handling </li>
+                            <li>Validation with libraries (Formik/Yup) </li>
+                          </ul>
+                        </Card.Body>
+                      </Card>
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                  <Accordion.Item eventKey="6">
+                    <Accordion.Header>
+                       7. State Management
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <Card className="module-card">
+                        <Card.Body>
+                          <ul>
+                            <li>Context API </li>
+                            <li>Redux Basics </li>
+                            <li>Redux Toolkit (Modern Redux) </li>
+                          </ul>
+                        </Card.Body>
+                      </Card>
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                  <Accordion.Item eventKey="7">
+                    <Accordion.Header>
+                      8. API Integration
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <Card className="module-card">
+                        <Card.Body>
+                          <ul>
+                            <li>Fetching data with Fetch/Axios </li>
+                            <li>Async/Await and Promises </li>
+                            <li>Handling loading & error states </li>
+                          </ul>
+                        </Card.Body>
+                      </Card>
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                  <Accordion.Item eventKey="9">
+                    <Accordion.Header>
+                      9. Advanced React Concepts
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <Card className="module-card">
+                        <Card.Body>
+                          <ul>
+                            <li>Lazy Loading & Code Splitting </li>
+                            <li>React.memo & useMemo for optimization </li>
+                            <li>Error Boundaries </li>
+                          </ul>
+                        </Card.Body>
+                      </Card>
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                  <Accordion.Item eventKey="10">
+                    <Accordion.Header>
+                      10. Project Work (Hands-on)
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <Card className="module-card">
+                        <Card.Body>
+                          <ul>
+                            <li>Build a To-Do App / Blog App </li>
+                            <li>Integrate APIs (e.g., JSONPlaceholder or custom API) </li>
+                            <li>Deploy to Netlify/Vercel </li>
+                          </ul>
+                        </Card.Body>
+                      </Card>
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                  <Accordion.Item eventKey="11">
+                    <Accordion.Header>
+                      11. Deployment
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <Card className="module-card">
+                        <Card.Body>
+                          <ul>
+                            <li>Preparing production builds </li>
+                            <li>Hosting React apps </li>
+                          </ul>
+                        </Card.Body>
+                      </Card>
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                  <Accordion.Item eventKey="12">
+                    <Accordion.Header>
+                      12. Best Practices & Next Steps
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <Card className="module-card">
+                        <Card.Body>
+                          <ul>
+                            <li>Folder structure </li>
+                            <li>Reusable components </li>
+                            <li>Introduction to Next.js (Optional) </li>
+                          </ul>
                         </Card.Body>
                       </Card>
                     </Accordion.Body>
