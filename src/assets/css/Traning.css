@@ -27,7 +27,7 @@
 
 .accordion-body {
   background-color: #f4f4f4;
-  padding: 1.2rem;
+  padding: 8px;
 }
 
 /* Module Card Styles */
@@ -40,7 +40,7 @@
 
 .module-card p {
   margin-bottom: 0;
-  font-size: 1rem;
+  font-size: 12px;
   line-height: 1.6;
   color: #333;
 }
@@ -59,7 +59,7 @@
     border-radius: 8px 8px 0px 0px;
 }
 .accordion-button::after {
-    background-image: url("../images/down-arrow.svg") !important;
+    background-image: url("../images/down-arrow.png") !important;
     content: "";
  font-size: 12px;
 }
@@ -81,9 +81,10 @@
   font-size: 0.95rem;
   color: #666;
 }
-.button.accordion-button{
-  font-size: 14px;
+button.accordion-button {
+  font-size: 14px !important;
     font-weight: normal;
+    padding: 12px;
 }
 
 /* Responsive adjustments */
