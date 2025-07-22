@@ -41,11 +41,11 @@ export const googleLogin = (data) => {
 
 // api/auth.js
 export const getPostedJobById = async () => {
-  const job_id = localStorage.getItem("selected_job_id");
+  const job_id = localStorage.getItem("employee_id");
   const job_title = localStorage.getItem("job_title"); // example: "5"
   console.log("job_id", job_id);
 
-  const response = await axios.get(`http://127.0.0.1:8000/api/posted-jobs/`);
+  const response = await axios.get(`http://127.0.0.1:8000/api3/Emplopostedjob/`);
   return response.data;
 };
 

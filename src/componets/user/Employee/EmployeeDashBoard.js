@@ -10,6 +10,8 @@ import { IoIosArrowForward } from "react-icons/io";
 import { RiHome2Line } from "react-icons/ri";
 import axios from "axios";
 import EmployeeLeftNav from "./EmployeeLeftNav";
+import JobCard from "../leftnav/JobCard";
+import PostJobGetView from "./PostJobGetView";
 
 // import ManagerLeftNav from "./ManagerLeftNav";
 
@@ -116,6 +118,7 @@ const EmployeeDashBoard = () => {
 
             <div className="dash-heading">
               <h1> Employee DashBoard</h1>
+              <PostJobGetView />
               {/* <Row>
                 <Col lg={9} md={9} sm={12}>
                   <Card className="dashboard-contanier p-4">
@@ -162,6 +165,7 @@ const EmployeeDashBoard = () => {
                   </Card>
                 </Col>
               </Row> */}
+              <JobCard />
             </div>
           </div>
         </div>

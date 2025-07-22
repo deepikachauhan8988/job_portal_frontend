@@ -129,7 +129,7 @@ const AdminRegistration = () => {
   // localStorage.setItem("admin_first_name", first_name);
   // localStorage.setItem("admin_last_name", last_name);
 
-      alert("Registration successful!");
+      alert("Registration successfully!");
 //       const first_name = response.data.first_name;
 //       const last_name = response.data.last_name;
 // console.log("first name", first_name)

@@ -11,6 +11,7 @@ import { RiHome2Line } from "react-icons/ri";
 import axios from "axios";
 import ManagerLeftNav from "./ManagerLeftNav";
 import { Link } from "react-router-dom";
+import ManagerGetTable from "./ManagerGetTable";
 
 const ManagerDashBoard = () => {
   const [showModal, setShowModal] = useState(false);
@@ -116,7 +117,7 @@ const ManagerDashBoard = () => {
             <div className="dash-heading">
               <h1> Manager DashBoard</h1>
               <Row>
-                <Col lg={9} md={9} sm={12}>
+                <Col lg={12} md={12} sm={12}>
                   <Card className="dashboard-contanier p-4">
                     <div className="manager-container">
                       <div className="manager-header">
@@ -147,6 +148,7 @@ const ManagerDashBoard = () => {
                         </div>
                       </div>
                        <p className="text-end">go for Employee <Link to = "/AdminLogin">login</Link></p>
+                       <ManagerGetTable />
                     </div>
                   </Card>
                 </Col>
@@ -242,7 +244,7 @@ const ManagerDashBoard = () => {
             Cancel
           </Button>
           <Button variant="primary" onClick={handleEmployee}>
-            Assign
+            Add Employee
           </Button>
         </Modal.Footer>
       </Modal>
