@@ -556,11 +556,11 @@ span.nav-label:hover {
     content: "";
 }
 
-.accordion-button:not(.collapsed) {
+/* .accordion-button:not(.collapsed) {
     color: var(--awc-white) !important;
     background-color: var(--awc-blue-hover) !important;
     border-radius: 8px 8px 0px 0px;
-}
+} */
 
 .awc-admin-bg {
     margin-top: 22%;

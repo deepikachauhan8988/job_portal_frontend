@@ -7,7 +7,7 @@ import axios from "axios";
 const ActivePlan = ({ plan }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    admin: 17,                        // AdminDepartment ID
+    admin: 18,                        // AdminDepartment ID
     plan_description: "Starter Plan",
     plan_price: 4999,
     Number_of_manager: 3,

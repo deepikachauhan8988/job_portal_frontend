@@ -45,6 +45,15 @@ import EmployeeLeftNav from "./componets/user/Employee/EmployeeLeftNav";
 import SettingPassword from "./componets/user/Admin/SettingPassword";
 import ManagerProfile from "./componets/user/Manager/ManagerProfile";
 
+import TraningRaact from "./componets/user/Traning/TraningRaact";
+import TraningPython from "./componets/user/Traning/TraningPython";
+import TraningWebDesign from "./componets/user/Traning/TraningWebDesign";
+import TraningPHP from "./componets/user/Traning/TraningPHP"
+import TraningMySql from "./componets/user/Traning/TraningMySql";
+import TraningBootstrap from "./componets/user/Traning/TraningBootstrap";
+import UIUXTraning from "./componets/user/Traning/UIUXTraning";
+
+
 function App() {
   return (
     <Router>
@@ -93,7 +102,14 @@ const AppContent = () => {
         <Route path="/EmployeeLeftNav" element={<EmployeeLeftNav />} />
         <Route path="/SettingPassword" element={<SettingPassword />} />
         <Route path="/ManagerProfile" element={<ManagerProfile />} />
-        
+        <Route path="/TraningRaact" element={<TraningRaact />} />
+        <Route path="/TraningPython" element={<TraningPython />} />
+        <Route path="/TraningWebDesign" element={<TraningWebDesign />} />
+        <Route path="/TraningPHP" element={<TraningPHP />} />
+        <Route path="/TraningMySql" element={<TraningMySql />} />
+        <Route path="/TraningBootstrap" element={<TraningBootstrap />} />
+        <Route path="/UIUXTraning" element={<UIUXTraning />} />
+       
 
         <Route path="/AdminProfile" element={<AdminProfile />} />
         

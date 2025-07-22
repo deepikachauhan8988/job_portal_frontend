@@ -113,7 +113,7 @@ const AdmininnerDashBoard = () => {
               <h1> Admin DashBoard</h1>
              
               <Row>
-                <Col lg={9} md={9} sm={12}>
+                <Col lg={12} md={12} sm={12}>
                   <Card className="dashboard-contanier p-4">
                     <div className="manager-container">
                       <div className="manager-header">
