@@ -35,41 +35,41 @@ function NavBar() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto nav-list gap-4 justify-content-end flex-grow-1 d-flex">
               <NavDropdown title="Training" id="training-dropdown">
-                <NavDropdown.Item as={Link} to="/TraningRaact">
+                <NavDropdown.Item as={Link} to="/TrainingReact">
                   React JS
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPython">
+                <NavDropdown.Item as={Link} to="/TrainingPython">
                   Python
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPHP">
+                <NavDropdown.Item as={Link} to="/TrainingPHP">
                   PHP
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningMySql">
+                <NavDropdown.Item as={Link} to="/TrainingMySql">
                   MySQL
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningBootstrap">
+                <NavDropdown.Item as={Link} to="/TrainingBootstrap">
                   HTML/CSS/Bootstrap
                 </NavDropdown.Item>
 
-                <NavDropdown.Item as={Link} to="/TraningWebDesign">
+                <NavDropdown.Item as={Link} to="/TrainingWebDesign">
                   Web Development
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/UIUXTraning">
+                <NavDropdown.Item as={Link} to="/UIUXTraining">
                   UI/UX Designer
                 </NavDropdown.Item>
               </NavDropdown>
 
               <NavDropdown title="Growing Class" id="growing-class-dropdown">
-                <NavDropdown.Item as={Link} to="/TraningPython">Communication Skills</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPython">Self-Confidence & Power Dressing</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPython">Interview Skills</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPython">Public Speaking</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/Communication">Communication Skills</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/SelfConfidence">Self-Confidence & Power Dressing</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/InterviewSkill">Interview Skills</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/PublicSpeaking">Public Speaking</NavDropdown.Item>
               </NavDropdown>
 
               <NavDropdown title="Study Material" id="study-material-dropdown">
-                <NavDropdown.Item as={Link} to="/TraningPython">PDF Tutorial</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPython">Video Tutorial</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPython">Live Class</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/PdfTutorial">PDF Tutorial</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/VideoTutorial">Video Tutorial</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/LiveClass">Live Class</NavDropdown.Item>
               </NavDropdown>
 
               <NavDropdown title="Event" id="event-dropdown">
