@@ -3,9 +3,9 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  useLocation
+  useLocation,
 } from "react-router-dom";
-import "../src/custom/style.css"
+import "../src/custom/style.css";
 import NavBar from "./componets/user/top-navbar/NavBar";
 import Home from "./componets/user/UserPages/Home";
 import NotFound from "./componets/notfound/NotFound";
@@ -35,7 +35,7 @@ import AdminRegistration from "./componets/user/Admin/AdminRegistration";
 import AdminDashboard from "./componets/user/Admin/AdminDashBoard";
 import AdminLogin from "./componets/user/Admin/AdminLogin";
 import AdminForgotPassword from "./componets/user/Admin/AdminForgotPassword";
-import "../src/custom/Mainstyle.css"
+import "../src/custom/Mainstyle.css";
 import AdmininnerDashBoard from "./componets/user/Admin/AdmininnerDashBoard";
 import AdminProfile from "./componets/user/Admin/AdminProfile";
 import ManagerDashBoard from "./componets/user/Manager/ManagerDashBoard";
@@ -48,12 +48,18 @@ import ManagerProfile from "./componets/user/Manager/ManagerProfile";
 import TraningRaact from "./componets/user/Traning/TraningRaact";
 import TraningPython from "./componets/user/Traning/TraningPython";
 import TraningWebDesign from "./componets/user/Traning/TraningWebDesign";
-import TraningPHP from "./componets/user/Traning/TraningPHP"
+import TraningPHP from "./componets/user/Traning/TraningPHP";
 import TraningMySql from "./componets/user/Traning/TraningMySql";
 import TraningBootstrap from "./componets/user/Traning/TraningBootstrap";
 import UIUXTraning from "./componets/user/Traning/UIUXTraning";
-
-
+import Communication from "./componets/user/GrowingClass/Communication";
+import InterviewSkill from "./componets/user/GrowingClass/InterviewSkill";
+import SelfConfidence from "./componets/user/GrowingClass/SelfConfidence";
+import PublicSpeaking from "./componets/user/GrowingClass/PublicSpeaking";
+import PdfTutorial from "./componets/user/StudyMaterial/PdfTutorial";
+import VideoTutorial from "./componets/user/StudyMaterial/VideoTutorial";
+import LiveClass from "./componets/user/StudyMaterial/LiveClass";
+import Event from "./componets/user/Event/Event";
 function App() {
   return (
     <Router>
@@ -66,7 +72,13 @@ function App() {
 const AppContent = () => {
   const location = useLocation();
 
-  const hiddenPaths = new Set(["/AdmininnerDashBoard", "/AdminProfile","/ManagerDashBoard", "/EmployeeDashboard","/ManagerProfile"]);
+  const hiddenPaths = new Set([
+    "/AdmininnerDashBoard",
+    "/AdminProfile",
+    "/ManagerDashBoard",
+    "/EmployeeDashboard",
+    "/ManagerProfile",
+  ]);
   const shouldHideNavbar = hiddenPaths.has(location.pathname);
 
   return (
@@ -109,11 +121,18 @@ const AppContent = () => {
         <Route path="/TraningMySql" element={<TraningMySql />} />
         <Route path="/TraningBootstrap" element={<TraningBootstrap />} />
         <Route path="/UIUXTraning" element={<UIUXTraning />} />
-       
+        <Route path="/Communication" element={<Communication />}/>
+        <Route path="/SelfConfidence" element={<SelfConfidence />}/>
+        <Route path="/InterviewSkill" element={<InterviewSkill />}/>
+        <Route path="/PublicSpeaking" element={<PublicSpeaking />}/>
+        <Route path="/PdfTutorial" element={<PdfTutorial />}/>
+        <Route path="/VideoTutorial" element={<VideoTutorial />}/>
+        <Route path="/LiveClass" element={<LiveClass />}/>
+        <Route path="/Event" element={<Event />}/>
+
+
 
         <Route path="/AdminProfile" element={<AdminProfile />} />
-        
-        
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
