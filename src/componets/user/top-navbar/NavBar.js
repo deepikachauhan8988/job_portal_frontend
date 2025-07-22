@@ -60,16 +60,16 @@ function NavBar() {
               </NavDropdown>
 
               <NavDropdown title="Growing Class" id="growing-class-dropdown">
-                <NavDropdown.Item as={Link} to="/TraningPython">Communication Skills</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPython">Self-Confidence & Power Dressing</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPython">Interview Skills</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPython">Public Speaking</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/Communication">Communication Skills</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/SelfConfidence">Self-Confidence & Power Dressing</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/InterviewSkill">Interview Skills</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/PublicSpeaking">Public Speaking</NavDropdown.Item>
               </NavDropdown>
 
               <NavDropdown title="Study Material" id="study-material-dropdown">
-                <NavDropdown.Item as={Link} to="/TraningPython">PDF Tutorial</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPython">Video Tutorial</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPython">Live Class</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/PdfTutorial">PDF Tutorial</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/VideoTutorial">Video Tutorial</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/LiveClass">Live Class</NavDropdown.Item>
               </NavDropdown>
 
               <NavDropdown title="Event" id="event-dropdown">
