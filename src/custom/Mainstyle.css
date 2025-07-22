@@ -40,8 +40,7 @@
   --awc-dark-gray: #4a525a;
   --awc-blue-off: #5886FF;
   --awc-blue-dark-bg: #0F1A34;
-  --awc-main-primary-blue: #1a73e8
- ;
+  --awc-main-primary-blue: #1a73e8;
   --awc-gray-light-bg: #b4b4b4;
   --awc-blue-light-bg: #4f8ecc;
 
@@ -96,10 +95,11 @@
     margin: -3px;
   } */
 
-  .dropdown-arrow{
-    font-size: var(--awc-space-500) !important;
+.dropdown-arrow {
+  font-size: var(--awc-space-500) !important;
 
-  }
+}
+
 .modal-footer {
   justify-content: center !important;
 }
@@ -246,20 +246,27 @@ button.awc-btn-money.btn.btn-primary {
   display: flex;
   justify-content: space-between;
 }
-.text1{
+
+.text1 {
   display: flex;
   justify-content: space-between;
 }
 
+.main-nav .nav-link {
+  color: #fff !important;
+}
+
+
 @media only screen and (max-width: 568px) {
-  .awc-btn-bill{
-text-align: center !important;
-margin-bottom: var(--awc-space-300);
+  .awc-btn-bill {
+    text-align: center !important;
+    margin-bottom: var(--awc-space-300);
   }
+
   .dash-mob {
     padding-top: var(--awc-space-200);
   }
- 
+
   .awc-dpo-icon-finace {
     display: none;
   }
@@ -314,7 +321,8 @@ margin-bottom: var(--awc-space-300);
   .awc-form-box {
     padding: var(--awc-space-0) !important;
   }
-/* 
+
+  /* 
   .awc-staff-mobresp {
     display: block !important;
   } */

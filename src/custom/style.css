@@ -164,7 +164,11 @@ a {
 }
 
 .navbar-brand {
-  color: #ffa500;
+  color: #ffa500 !important;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    
+    background-color: #cae5ff !important;
 }
 
 .dropdown-item {
@@ -366,7 +370,6 @@ label.form-label {
   color: #fff;
   margin-right: 16px;
 }
-
 
 
 
