@@ -14,7 +14,7 @@ const TraningPython = () => {
                 <h3 className="section-heading">📚 Python Training Program </h3>
                 <Accordion defaultActiveKey="0" flush alwaysOpen>
                   <Accordion.Item eventKey="0">
-                    <Accordion.Header>1. Introduction to React</Accordion.Header>
+                    <Accordion.Header>1. Introduction to Python</Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
