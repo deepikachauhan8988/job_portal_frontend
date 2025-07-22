@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaBriefcase, FaUserGraduate } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../../api/auth";
-import RegisterImg from "../../../../../jobportal/src/assets/images/register-img.jpeg";
+import RegisterImg from "../../../assets/images/register-img.jpeg"
 
 const UserRegistration = () => {
   const navigate = useNavigate();
