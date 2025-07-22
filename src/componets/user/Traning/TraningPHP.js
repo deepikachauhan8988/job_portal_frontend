@@ -65,7 +65,7 @@ const TraningPHP = () => {
 
                   <Accordion.Item eventKey="3">
                     <Accordion.Header>
-                     Functions in PHP
+                    4. Functions in PHP
                     </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">

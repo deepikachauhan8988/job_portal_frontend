@@ -122,7 +122,7 @@ const TraningBootstrap = () => {
                   <Accordion.Item eventKey="2">
                     <Accordion.Header>
                       {" "}
-                      Bootstrap (Responsive Framework)
+                    3. Bootstrap (Responsive Framework)
                     </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
