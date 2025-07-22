@@ -35,26 +35,26 @@ function NavBar() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto nav-list gap-4 justify-content-end flex-grow-1 d-flex">
               <NavDropdown title="Training" id="training-dropdown">
-                <NavDropdown.Item as={Link} to="/TraningRaact">
+                <NavDropdown.Item as={Link} to="/TrainingReact">
                   React JS
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPython">
+                <NavDropdown.Item as={Link} to="/TrainingPython">
                   Python
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningPHP">
+                <NavDropdown.Item as={Link} to="/TrainingPHP">
                   PHP
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningMySql">
+                <NavDropdown.Item as={Link} to="/TrainingMySql">
                   MySQL
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/TraningBootstrap">
+                <NavDropdown.Item as={Link} to="/TrainingBootstrap">
                   HTML/CSS/Bootstrap
                 </NavDropdown.Item>
 
-                <NavDropdown.Item as={Link} to="/TraningWebDesign">
+                <NavDropdown.Item as={Link} to="/TrainingWebDesign">
                   Web Development
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/UIUXTraning">
+                <NavDropdown.Item as={Link} to="/UIUXTraining">
                   UI/UX Designer
                 </NavDropdown.Item>
               </NavDropdown>

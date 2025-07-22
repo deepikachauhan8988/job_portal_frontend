@@ -134,8 +134,8 @@ const UserRegistration = () => {
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col md={7} lg={7} sm={12} className="mt-4">
-            <h4 className="fw-bold">Create your profile</h4>
-            <p className="text-muted mb-4">Search & apply to jobs from India's No.1 Job Site</p>
+            <h4 className="fw-bold">Registration</h4>
+            <p className="text-muted mb-4">Register now to explore personalized services.</p>
 
             <Form.Group className="mb-3">
               <Form.Label>Full name<span className="text-danger">*</span></Form.Label>

@@ -1,8 +1,9 @@
 import React from "react";
 import { Row, Col, Accordion, Card } from "react-bootstrap";
-import "../../../assets/css/Traning.css";
+import "../../../assets/css/Training.css";
+import { Link } from "react-router-dom";
 
-const TraningBootstrap = () => {
+const TrainingBootstrap = () => {
   return (
     <div className="main-contanier">
       <div className="my-3 main-mt-0">
@@ -212,12 +213,14 @@ const TraningBootstrap = () => {
               <Card className="registration-card">
                 <h4 className="text-center">📋 Registration</h4>
                 <p className="text-muted text-center">
-                  Enroll now to start your React journey!
+                  Enroll now to start your HTML/CSS/Bootstrap journey!
                 </p>
                 <div className="text-center mt-3">
+                  <Link to="/UserRegistration">
                   <button className="btn btn-primary rounded-pill px-4">
                     Register Now
                   </button>
+                  </Link>
                 </div>
               </Card>
             </Col>
@@ -228,4 +231,4 @@ const TraningBootstrap = () => {
   );
 };
 
-export default TraningBootstrap;
+export default TrainingBootstrap;

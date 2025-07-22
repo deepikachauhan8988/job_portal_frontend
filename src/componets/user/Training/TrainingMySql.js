@@ -1,8 +1,9 @@
 import React from "react";
 import { Row, Col, Accordion, Card } from "react-bootstrap";
-import "../../../assets/css/Traning.css";
+import "../../../assets/css/Training.css";
+import { Link } from "react-router-dom";
 
-const TraningMySql = () => {
+const TrainingMySql = () => {
   return (
     <div className="main-contanier">
       <div className="my-3 main-mt-0">
@@ -259,12 +260,14 @@ const TraningMySql = () => {
               <Card className="registration-card">
                 <h4 className="text-center">📋 Registration</h4>
                 <p className="text-muted text-center">
-                  Enroll now to start your React journey!
+                  Enroll now to start your MySql journey!
                 </p>
                 <div className="text-center mt-3">
+                  <Link to="/UserRegistration">
                   <button className="btn btn-primary rounded-pill px-4">
                     Register Now
                   </button>
+                  </Link>
                 </div>
               </Card>
             </Col>
@@ -275,4 +278,4 @@ const TraningMySql = () => {
   );
 };
 
-export default TraningMySql;
+export default TrainingMySql;

@@ -1,8 +1,9 @@
 import React from "react";
-import { Container, Row, Col, Accordion, Card } from "react-bootstrap";
-import "../../../assets/css/Traning.css";
+import {Row, Col, Accordion, Card } from "react-bootstrap";
+import "../../../assets/css/Training.css";
+import { Link } from "react-router-dom";
 
-const TraningRaact = () => {
+const TrainingPHP = () => {
   return (
     <div className="main-contanier">
       <div className="my-3 main-mt-0">
@@ -11,17 +12,19 @@ const TraningRaact = () => {
             {/* Left Column (Accordion) */}
             <Col md={8} sm={12} className="mb-4">
               <Card>
-                <h3 className="section-heading">📚 React Training Program </h3>
+                <h3 className="section-heading">📚  PHP Training Program Outline </h3>
                 <Accordion defaultActiveKey="0" flush alwaysOpen>
                   <Accordion.Item eventKey="0">
-                    <Accordion.Header>1. Introduction to React</Accordion.Header>
+                    <Accordion.Header>1. Introduction to PHP</Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
                         <ul>
-                          <li>What is React? </li>
-                          <li>Why React? (Benefits & Use Cases) </li>
-                          <li>Setting up React environment (Node.js, npm, create-react-app) </li>
+                          <li>What is PHP?  </li>
+                          <li>Features of PHP   </li>
+                          <li>PHP vs Other Languages (Java, Python)   </li>
+                          <li>Setting up PHP environment (XAMPP/WAMP/LAMP, VSCode/Sublime)  </li>
+                          <li>Your first PHP program (Hello World!) </li>
                         </ul>
                         </Card.Body>
                       </Card>
@@ -29,17 +32,16 @@ const TraningRaact = () => {
                   </Accordion.Item>
 
                   <Accordion.Item eventKey="1">
-                    <Accordion.Header>2. React Fundamentals </Accordion.Header>
+                    <Accordion.Header> 2. PHP Basics  </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
                           <ul>
-                            <li>Components: Functional vs Class Components </li>
-                            <li>JSX (JavaScript XML) </li>
-                            <li>Props and State </li>
-                            <li>Handling Events </li>
-                            <li>Conditional Rendering </li>
-                            <li>Lists and Keys </li>
+                            <li>PHP Syntax & Tags   </li>
+                            <li>Variables and Constants   </li>
+                            <li>Data Types in PHP (string, int, float, bool, arrays, objects)   </li>
+                            <li>Operators (Arithmetic, Assignment, Comparison, Logical)   </li>
+                            <li>Comments in PHP </li>
                           </ul>
                         </Card.Body>
                       </Card>
@@ -47,15 +49,15 @@ const TraningRaact = () => {
                   </Accordion.Item>
 
                   <Accordion.Item eventKey="2">
-                    <Accordion.Header> 3. React Hooks (Modern React)</Accordion.Header>
+                    <Accordion.Header>   3. Control Structures</Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
                           <ul>
-                            <li>Introduction to Hooks </li>
-                            <li>useState, useEffect </li>
-                            <li>useRef, useContext, useReducer </li>
-                            <li>Custom Hooks </li>
+                            <li>If, If-Else, Nested If  </li>
+                            <li>Switch-Case  </li>
+                            <li>Loops (for, while, do-while, foreach)   </li>
+                            <li>Break & Continue Statements </li>
                           </ul>
                         </Card.Body>
                       </Card>
@@ -64,15 +66,17 @@ const TraningRaact = () => {
 
                   <Accordion.Item eventKey="3">
                     <Accordion.Header>
-                     4. Routing in React
+                    4. Functions in PHP
                     </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
                           <ul>
-                            <li>React Router basics </li>
-                            <li>Dynamic Routing </li>
-                            <li>Navigation & Redirects </li>
+                            <li>Defining and Calling Functions  </li>
+                            <li>Arguments (Default, Optional, Return Values)   </li>
+                            <li>Variable Scope (Global & Local)   </li>
+                            <li>Include & Require Statements    </li>
+                            <li>PHP Built-in Functions (String, Array, Math) </li>
                           </ul>
                         </Card.Body>
                       </Card>
@@ -81,15 +85,16 @@ const TraningRaact = () => {
 
                   <Accordion.Item eventKey="4">
                     <Accordion.Header>
-                      5. Styling in React
+                      5. Working with Forms
                     </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
                           <ul>
-                            <li>CSS Modules </li>
-                            <li>Styled Components </li>
-                            <li>Tailwind CSS with React </li>
+                            <li>GET vs POST Methods </li>
+                            <li>Retrieving Form Data  </li>
+                            <li>Validating User Input   </li>
+                            <li>Sanitizing Data (Security Basics) </li>
                           </ul>
                         </Card.Body>
                       </Card>
@@ -98,15 +103,15 @@ const TraningRaact = () => {
 
                   <Accordion.Item eventKey="5">
                     <Accordion.Header>
-                       6. Forms and Validation
+                       6. Arrays in PHP 
                     </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
                           <ul>
-                            <li>Controlled vs Uncontrolled Components </li>
-                            <li>Form handling </li>
-                            <li>Validation with libraries (Formik/Yup) </li>
+                            <li>Indexed, Associative, and Multidimensional Arrays  </li>
+                            <li>Array Functions (sort, explode, implode, etc.)   </li>
+                            <li>Iterating Arrays (foreach, for loops)  </li>
                           </ul>
                         </Card.Body>
                       </Card>
@@ -115,15 +120,14 @@ const TraningRaact = () => {
 
                   <Accordion.Item eventKey="6">
                     <Accordion.Header>
-                       7. State Management
+                       7. Strings and Regular Expressions
                     </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
                           <ul>
-                            <li>Context API </li>
-                            <li>Redux Basics </li>
-                            <li>Redux Toolkit (Modern Redux) </li>
+                            <li>String Functions (strlen, str_replace, substr, etc.)  </li>
+                            <li>Pattern Matching with Regex (preg_match, preg_replace)   </li>
                           </ul>
                         </Card.Body>
                       </Card>
@@ -132,15 +136,15 @@ const TraningRaact = () => {
 
                   <Accordion.Item eventKey="7">
                     <Accordion.Header>
-                      8. API Integration
+                       8. Working with Files 
                     </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
                           <ul>
-                            <li>Fetching data with Fetch/Axios </li>
-                            <li>Async/Await and Promises </li>
-                            <li>Handling loading & error states </li>
+                            <li>Reading & Writing Files (fopen, fread, fwrite, fclose)   </li>
+                            <li>File Uploads   </li>
+                            <li>File Handling Best Practices </li>
                           </ul>
                         </Card.Body>
                       </Card>
@@ -149,15 +153,15 @@ const TraningRaact = () => {
 
                   <Accordion.Item eventKey="9">
                     <Accordion.Header>
-                      9. Advanced React Concepts
+                      9. Session Management
                     </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
                           <ul>
-                            <li>Lazy Loading & Code Splitting </li>
-                            <li>React.memo & useMemo for optimization </li>
-                            <li>Error Boundaries </li>
+                            <li>Cookies vs Sessions   </li>
+                            <li>Creating and Managing Sessions   </li>
+                            <li>Secure Session Handling </li>
                           </ul>
                         </Card.Body>
                       </Card>
@@ -166,15 +170,16 @@ const TraningRaact = () => {
 
                   <Accordion.Item eventKey="10">
                     <Accordion.Header>
-                      10. Project Work (Hands-on)
+                      10. PHP & MySQL Database
                     </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
                           <ul>
-                            <li>Build a To-Do App / Blog App </li>
-                            <li>Integrate APIs (e.g., JSONPlaceholder or custom API) </li>
-                            <li>Deploy to Netlify/Vercel </li>
+                            <li>Introduction to MySQL   </li>
+                            <li>Connecting PHP with MySQL (mysqli and PDO)  </li>
+                            <li>CRUD Operations (Create, Read, Update, Delete)   </li>
+                            <li>Prepared Statements to prevent SQL Injection </li>
                           </ul>
                         </Card.Body>
                       </Card>
@@ -183,14 +188,15 @@ const TraningRaact = () => {
 
                   <Accordion.Item eventKey="11">
                     <Accordion.Header>
-                      11. Deployment
+                       11. Error Handling & Debugging
                     </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
                           <ul>
-                            <li>Preparing production builds </li>
-                            <li>Hosting React apps </li>
+                            <li>Types of Errors (Syntax, Runtime, Logic)  </li>
+                            <li>Try-Catch Exception Handling </li>
+                            <li>Debugging Techniques  </li>
                           </ul>
                         </Card.Body>
                       </Card>
@@ -199,15 +205,53 @@ const TraningRaact = () => {
 
                   <Accordion.Item eventKey="12">
                     <Accordion.Header>
-                      12. Best Practices & Next Steps
+                      12. Object-Oriented Programming (OOP) in PHP
                     </Accordion.Header>
                     <Accordion.Body>
                       <Card className="module-card">
                         <Card.Body>
                           <ul>
-                            <li>Folder structure </li>
-                            <li>Reusable components </li>
-                            <li>Introduction to Next.js (Optional) </li>
+                            <li>Classes & Objects</li>
+                            <li>Constructors and Destructors </li>
+                            <li>Inheritance </li>
+                            <li>Encapsulation & Polymorphism </li>
+                          </ul>
+                        </Card.Body>
+                      </Card>
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                  
+                  <Accordion.Item eventKey="13">
+                    <Accordion.Header>
+                     13. PHP Advanced Topics
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <Card className="module-card">
+                        <Card.Body>
+                          <ul>
+                            <li>PHP Email Handling (mail function)   </li>
+                            <li>Introduction to REST APIs (Create and Consume APIs)  </li>
+                            <li>Working with JSON Data   </li>
+                            <li>Introduction to PHP Frameworks (Laravel basics overview) </li>
+                          </ul>
+                        </Card.Body>
+                      </Card>
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                   <Accordion.Item eventKey="14">
+                    <Accordion.Header>
+                     14. Project Work (Hands-on)
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <Card className="module-card">
+                        <Card.Body>
+                          <ul>
+                            <li>Contact Form with Database  </li><ul>
+                            <li>Simple Blog Application (CRUD operations)  </li>
+                            <li>User Login & Registration System    </li>
+                            </ul>
                           </ul>
                         </Card.Body>
                       </Card>
@@ -222,12 +266,14 @@ const TraningRaact = () => {
               <Card className="registration-card">
                 <h4 className="text-center">📋 Registration</h4>
                 <p className="text-muted text-center">
-                  Enroll now to start your React journey!
+                  Enroll now to start your PHP journey!
                 </p>
                 <div className="text-center mt-3">
+                  <Link to="/UserRegistration">
                   <button className="btn btn-primary rounded-pill px-4">
                     Register Now
                   </button>
+                  </Link>
                 </div>
               </Card>
             </Col>
@@ -238,4 +284,4 @@ const TraningRaact = () => {
   );
 };
 
-export default TraningRaact;
+export default TrainingPHP;
