@@ -67,7 +67,7 @@ const AdminLogin = () => {
         localStorage.setItem("admin_first_name", name);
         localStorage.setItem("admin_user_type", "manager");
 
-        alert("Manager Login Successful!");
+        alert("Manager Login Successfully!");
         return navigate("/ManagerDashboard");
       }
 
@@ -86,7 +86,7 @@ const AdminLogin = () => {
         localStorage.setItem("admin_first_name", name);
         localStorage.setItem("admin_user_type", "employee");
 
-        alert("Employee Login Successful!");
+        alert("Employee Login Successfully!");
         return navigate("/EmployeeDashboard");
       }
     } catch (error) {

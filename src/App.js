@@ -60,6 +60,8 @@ import PdfTutorial from "./componets/user/StudyMaterial/PdfTutorial";
 import VideoTutorial from "./componets/user/StudyMaterial/VideoTutorial";
 import LiveClass from "./componets/user/StudyMaterial/LiveClass";
 import Event from "./componets/user/Event/Event";
+import PostJobGetView from "./componets/user/Employee/PostJobGetView";
+
 function App() {
   return (
     <Router>
@@ -78,6 +80,7 @@ const AppContent = () => {
     "/ManagerDashBoard",
     "/EmployeeDashboard",
     "/ManagerProfile",
+    "/AdminDashboard"
   ]);
   const shouldHideNavbar = hiddenPaths.has(location.pathname);
 
@@ -129,6 +132,7 @@ const AppContent = () => {
         <Route path="/VideoTutorial" element={<VideoTutorial />}/>
         <Route path="/LiveClass" element={<LiveClass />}/>
         <Route path="/Event" element={<Event />}/>
+        <Route path="/PostJobGetView" element={<PostJobGetView />}/>
 
 
 

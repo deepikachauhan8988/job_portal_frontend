@@ -41,12 +41,19 @@ export const googleLogin = (data) => {
 
 // api/auth.js
 export const getPostedJobById = async () => {
-  const job_id = localStorage.getItem("selected_job_id");
-  const job_title = localStorage.getItem("job_title"); // example: "5"
-  console.log("job_id", job_id);
+  const employee_id = localStorage.getItem("employee_id"); // Ensure this is set
 
-  const response = await axios.get(`http://127.0.0.1:8000/api/posted-jobs/`);
-  return response.data;
+  if (!employee_id) throw new Error("employee_id not found in localStorage");
+
+  try {
+    const response = await axios.get(
+      `http://127.0.0.1:8000/api3/Emplopostedjob/${employee_id}/`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch posted jobs:", error);
+    throw error;
+  }
 };
 
 // 1. Standard login (email or phone + password)
@@ -253,34 +260,32 @@ export const UserRegistration = async () => {
   }
 };
 
-export const fetchResumeWithUserDetails = async (user_id) => {
+export const fetchResumeWithUserDetails = async () => {
   try {
-    const user_id = localStorage.getItem("user_id");
+    const rawUserId =10; // <-- from localStorage
+    console.log("Raw user_id from localStorage:", rawUserId);
 
-   
-    // ✅ safely access id
+    if (!rawUserId) throw new Error("User ID not found in localStorage");
 
-    console.log("user_id_registration", user_id);
-    // Resume data
-    const res = await axios.get(
-      `http://127.0.0.1:8000/api2/resume-detail/?user=${user_id}`
-    );
-    let data = res.data;
-console.log("userdata", res.data)
-    // Fix image and PDF paths
-    if (data.photo && !data.photo.startsWith("http")) {
-      data.photo = `http://127.0.0.1:8000${data.photo}`;
-    }
-    if (data.generated_pdf && !data.generated_pdf.startsWith("http")) {
-      data.generated_pdf = `http://127.0.0.1:8000${data.generated_pdf}`;
+      // ✅ Ensure string before replace
+
+    const res = await axios.get(`http://127.0.0.1:8000/api2/resume-detail/?user=${rawUserId}`);
+    const data = res.data;
+
+    console.log("Resume API Response:", data);
+
+    if (data.resume && !data.resume.startsWith("http")) {
+      data.resume = `http://127.0.0.1:8000${data.resume}`;
     }
 
     return data;
   } catch (error) {
-    console.error("Error in fetchResumeWithUserDetails:", error);
+    console.error("Error fetching resume details:", error?.response?.data || error.message || error);
     throw error;
   }
 };
+
+
 // Fetch user basic profile (name, email, phone)
 export const fetchUserProfileById = async (userId) => {
   try {

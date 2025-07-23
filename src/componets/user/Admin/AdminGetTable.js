@@ -32,7 +32,7 @@ const AdminGetTable = () => {
           return;
         }
 
-        console.log("🚀 Sending request to backend with admin ID:", storedAdminId);
+        console.log(" Sending request to backend with admin ID:", storedAdminId);
 
         const response = await axios.get("http://127.0.0.1:8000/api3/alldata/", {
           params: { admin: storedAdminId },
@@ -42,7 +42,7 @@ const AdminGetTable = () => {
         setManagerData(response.data.managers || []);
         setLoading(false);
       } catch (error) {
-        console.error("❌ Failed to fetch data:", error);
+        console.error(" Failed to fetch data:", error);
         if (error.response) {
           console.error("🔙 Backend says:", error.response.data);
         }
@@ -99,7 +99,7 @@ const AdminGetTable = () => {
   return (
     <div className="container mt-4">
       <Card className="p-4 shadow">
-        <h4 className="mb-4">All Managers (Admin ID: {adminId})</h4>
+        {/* <h4 className="mb-4">All Managers (Admin ID: {adminId})</h4> */}
 
         {loading && (
           <div className="text-center">
@@ -110,7 +110,7 @@ const AdminGetTable = () => {
         {error && <Alert variant="danger">{error}</Alert>}
 
         {!loading && !error && managerData.length === 0 && (
-          <Alert variant="info">No managers found for this admin.</Alert>
+          <Alert variant="info">No Data Found .</Alert>
         )}
 
         {!loading && managerData.length > 0 && (

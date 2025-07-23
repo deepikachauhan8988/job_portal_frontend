@@ -244,7 +244,7 @@ const AdmininnerDashBoard = () => {
             Cancel
           </Button>
           <Button variant="primary" onClick={handleAddManager}>
-            Assign
+            Add Manager
           </Button>
         </Modal.Footer>
       </Modal>

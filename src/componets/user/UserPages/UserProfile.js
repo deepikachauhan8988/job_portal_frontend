@@ -33,15 +33,18 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        console.log("Current User ID:", userId);
         if (!userId) throw new Error("User ID not found in localStorage");
 
         const resumeData = await fetchResumeWithUserDetails(userId);
         const userBasic = await fetchUserProfileById(userId);
 
-        console.log("Fetched resume:", resumeData.data);
-        console.log("Fetched user profile:", userBasic);
+        // Fix for relative PDF URL
+        let resumeUrl = resumeData.generated_pdf;
+        if (resumeUrl && !resumeUrl.startsWith("http")) {
+          resumeUrl = `${BASE_URL}${resumeUrl.startsWith("/") ? "" : "/"}${resumeUrl}`;
+        }
 
+        // Fix for relative image URL
         let photoURL = userBasic.photo;
         if (photoURL && !photoURL.startsWith("http")) {
           photoURL = `${BASE_URL}${photoURL.startsWith("/") ? "" : "/"}${photoURL}`;
@@ -53,6 +56,7 @@ const UserProfile = () => {
           email: userBasic.email,
           phone: userBasic.phone,
           photo: photoURL,
+          generated_pdf: resumeUrl,
         };
 
         setUserData(mergedData);
@@ -84,9 +88,7 @@ const UserProfile = () => {
 
   const renderField = (label, value) => (
     <Row className="mb-2" key={label}>
-      <Col sm={4}>
-        <strong>{label}:</strong>
-      </Col>
+      <Col sm={4}><strong>{label}:</strong></Col>
       <Col sm={8}>
         {value ? <span>{value}</span> : <span className="text-muted">Not provided</span>}
       </Col>
@@ -99,27 +101,19 @@ const UserProfile = () => {
       <div className="mb-3" key={label}>
         <h6 className="text-secondary">{label}</h6>
         <Row className="mb-2">
-          <Col sm={4}>
-            <strong>{detail.school ? "School:" : detail.college ? "College:" : "School/College:"}</strong>
-          </Col>
+          <Col sm={4}><strong>{detail.school ? "School:" : "College:"}</strong></Col>
           <Col sm={8}>{detail.school || detail.course || "N/A"}</Col>
         </Row>
         <Row>
-          <Col sm={4}>
-            <strong>Board/University:</strong>
-          </Col>
+          <Col sm={4}><strong>Board/University:</strong></Col>
           <Col sm={8}>{detail.board || "N/A"}</Col>
         </Row>
         <Row>
-          <Col sm={4}>
-            <strong>Year:</strong>
-          </Col>
+          <Col sm={4}><strong>Year:</strong></Col>
           <Col sm={8}>{detail.year || "N/A"}</Col>
         </Row>
         <Row>
-          <Col sm={4}>
-            <strong>Marks:</strong>
-          </Col>
+          <Col sm={4}><strong>Marks:</strong></Col>
           <Col sm={8}>{detail.marks || "N/A"}%</Col>
         </Row>
       </div>
@@ -176,14 +170,8 @@ const UserProfile = () => {
             </div>
 
             <h5 className="fw-bold mt-3">{userData.full_name}</h5>
-            <p className="text-muted">
-              <FaEnvelope className="me-2" />
-              {userData.email}
-            </p>
-            <p>
-              <FaPhone className="me-2" />
-              {userData.phone}
-            </p>
+            <p className="text-muted"><FaEnvelope className="me-2" />{userData.email}</p>
+            <p><FaPhone className="me-2" />{userData.phone}</p>
 
             {userData.linkedin_url && (
               <a
@@ -226,11 +214,9 @@ const UserProfile = () => {
             <section>
               <h5 className="text-primary border-bottom pb-1 mb-3">Resume</h5>
               <Row className="mb-3">
-                <Col sm={4}>
-                  <strong>Resume (PDF):</strong>
-                </Col>
+                <Col sm={4}><strong>Resume (PDF):</strong></Col>
                 <Col sm={8}>
-                  {localStorage.getItem("access_token1") && userData.generated_pdf ? (
+                  {userData.generated_pdf ? (
                     <a
                       href={userData.generated_pdf}
                       className="btn btn-outline-primary rounded-pill"
@@ -240,14 +226,18 @@ const UserProfile = () => {
                     >
                       Download Resume
                     </a>
-                  ) : !localStorage.getItem("token") ? (
-                    <span className="text-danger">Login to download your resume</span>
                   ) : (
                     <span className="text-muted">No resume uploaded</span>
                   )}
                 </Col>
               </Row>
-              <Button className="rounded-pill px-4 mt-2" variant="outline-secondary" onClick={() => navigate("/ViewProfile")}>Resume Edit</Button>
+              <Button
+                className="rounded-pill px-4 mt-2"
+                variant="outline-secondary"
+                onClick={() => navigate("/ViewProfile")}
+              >
+                Resume Edit
+              </Button>
             </section>
           </Col>
         </Row>

@@ -1,229 +1,283 @@
-// src/components/UserPages/PostJobCard.js
-
-import React, { useEffect, useState } from "react";
-import { Card, Spinner } from "react-bootstrap";
-import { FaStar, FaMapMarkerAlt, FaBookmark } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
 import {
-  getPostedJobById,
-  saveJobPost,
-  fetchSavedJobsByUserId,
-} from "../../../api/auth";
-import "../../../assets/css/PostJobCard.css";
+  Card,
+  Spinner,
+  Container,
+  Row,
+  Col,
+  Alert,
+  Form,
+  Button,
+} from "react-bootstrap";
+import {
+  FaMapMarkerAlt,
+  FaBriefcase,
+  FaStar,
+  FaBookmark,
+  FaRupeeSign,
+} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import ReusableSearch from "./ReusableSearch";
+import axios from "axios";
+import "../../../assets/css/PostJobCard.css";
 
 const PostJobCard = ({ jobs }) => {
-  const [savedJobs, setSavedJobs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [filteredJobs, setFilteredJobs] = useState([]);
-  const [searchParams, setSearchParams] = useState({
-    job_title: "",
-    job_location: "",
-    job_experience: "",
+  const [searchFields, setSearchFields] = useState({
+    title: "",
+    location: "",
+    experience: "",
   });
-
-  const userId = localStorage.getItem("job_user_id");
-  const token = localStorage.getItem("access_token1");
-  const selectedLocation = localStorage.getItem("job_location");
-  const job_experience = localStorage.getItem("job_location");
+  const [savedJobs, setSavedJobs] = useState([]);
+  const [alertMsg, setAlertMsg] = useState(null);
+  const [alertVariant, setAlertVariant] = useState("success");
   const navigate = useNavigate();
+  const [filteredJobs, setFilteredJobs] = useState([]);
+
+  useEffect(() => {
+    if (!jobs) return;
+
+    const title = searchFields.title.toLowerCase().trim();
+    const location = searchFields.location.toLowerCase().trim();
+    const experience = searchFields.experience.trim();
+
+    let minExp = null;
+    let maxExp = null;
+
+    if (experience.includes("-")) {
+      const parts = experience.split("-");
+      if (parts.length === 2) {
+        minExp = parseInt(parts[0].trim(), 10);
+        maxExp = parseInt(parts[1].trim(), 10);
+      }
+    }
+
+    const filtered = jobs.filter((job) => {
+      const jobTitle = job.job_title?.toLowerCase() || "";
+      const jobLocation = job.location?.toLowerCase() || "";
+      const jobMinExp = parseInt(job.Min_work_experience || 0);
+      const jobMaxExp = parseInt(job.Max_work_experience || 100);
+
+      const matchTitle = title === "" || jobTitle.includes(title);
+      const matchLocation = location === "" || jobLocation.includes(location);
+      const matchExperience =
+        minExp === null || maxExp === null
+          ? true
+          : jobMinExp >= minExp && jobMaxExp <= maxExp;
+
+      return matchTitle && matchLocation && matchExperience;
+    });
+
+    setFilteredJobs(filtered);
+  }, [searchFields, jobs]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setSearchFields((prev) => ({ ...prev, [name]: value }));
+  };
 
   const getDaysAgoText = (dateStr) => {
     const postDate = new Date(dateStr);
     const currentDate = new Date();
-    const timeDiff = currentDate - postDate;
-    const daysAgo = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    if (daysAgo === 0) return "Posted today";
-    if (daysAgo === 1) return "1 day ago";
-    return `${daysAgo} days ago`;
+    const diffTime = currentDate - postDate;
+    const daysAgo = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    return daysAgo === 0 ? "Posted today" : `${daysAgo} Days Ago`;
+  };
+
+  const handleReadMore = (job) => {
+    const userId = localStorage.getItem("user_id");
+    if (userId) {
+      navigate("/JobDetails", { state: { job } });
+    } else {
+      navigate("/UserLogin");
+    }
   };
 
   const handleSaveJob = async (job) => {
-    if (!userId || !token) {
-      alert("Please login to save jobs");
+    const userId = localStorage.getItem("user_id");
+
+    if (!userId || !job || !job.id) {
+      setAlertMsg("User not logged in or job details missing.");
+      setAlertVariant("danger");
       return;
     }
 
-    const isAlreadySaved = savedJobs.some((saved) => saved.job_id === job.job_id);
-    if (isAlreadySaved) {
-      alert("You have already saved this job.");
+    if (savedJobs.includes(job.id)) {
+      setAlertMsg("This job has already been saved.");
+      setAlertVariant("warning");
       return;
     }
 
     const payload = {
       user: userId,
-      job_id: job.job_id,
-      job_title: job.job_title,
-      sub_title: job.sub_title || "",
-      company_name: job.company_name,
-      location: job.location,
-      salary: job.salary,
-      work_mode: job.work_mode,
-      education: job.education,
-      experience: job.experience || "0-1 Yrs",
-      comment: job.comment || "",
+      job_id: job.job_id || job.id,
+      job_title: job.job_title || "Untitled Job",
+      sub_title: job.sub_title || "No subtitle",
+      comment: "Saved by user",
+      location: job.location || "Not specified",
+      experience: `${job.Min_work_experience || 0} - ${job.Max_work_experience || 0}`,
+      salary: `${job.Min_salary || 0} - ${job.Max_salary || "Not disclosed"}`,
+      work_mode: job.work_mode || "Not specified",
+      education: job.education || "Not specified",
+      company_name: job.company_name || "Unnamed Company",
     };
 
     try {
-      await saveJobPost(payload, token);
-      alert("Job saved successfully!");
-      setSavedJobs((prev) => [...prev, { job_id: job.job_id }]);
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/Saved-post/",
+        payload
+      );
+      setSavedJobs((prev) => [...prev, job.id]);
+      setAlertMsg("Job saved successfully.");
+      setAlertVariant("success");
     } catch (error) {
-      console.error("Failed to save job:", error);
-      alert("Error saving job.");
-    }
-  };
-
-  const handleReadMore = (job) => {
-    if (!token || !userId) {
-      navigate("/UserLogin");
-    } else {
-      localStorage.setItem("selected_job_id", job.job_id);
-      navigate("/JobDetails");
+      console.error("Error saving job:", error.response?.data || error.message);
+      setAlertMsg("Failed to save the job.");
+      setAlertVariant("danger");
     }
   };
 
   useEffect(() => {
-    const fetchSavedJobs = async () => {
-      try {
-        if (userId) {
-          const saved = await fetchSavedJobsByUserId(userId);
-          setSavedJobs(saved || []);
-        }
-      } catch (error) {
-        console.error("Failed to fetch saved jobs:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSavedJobs();
-  }, [userId]);
-
-  useEffect(() => {
-    if (jobs && Array.isArray(jobs)) {
-      let filtered = [...jobs];
-
-      // Filter by localStorage location
-      if (selectedLocation && selectedLocation !== "All") {
-        filtered = filtered.filter((job) =>
-          job.location?.toLowerCase().includes(selectedLocation.toLowerCase())
-        );
-      }
-
-      // Filter by ReusableSearch inputs
-      if (searchParams.job_location) {
-        filtered = filtered.filter((job) =>
-          job.location?.toLowerCase().includes(searchParams.job_location.toLowerCase())
-        );
-      }
-
-      if (searchParams.job_title) {
-        filtered = filtered.filter((job) =>
-          job.job_title?.toLowerCase().includes(searchParams.job_title.toLowerCase())
-        );
-      }
-
-      if (searchParams.job_experience) {
-        filtered = filtered.filter((job) =>
-          job.experience?.toLowerCase().includes(searchParams.job_experience.toLowerCase())
-        );
-      }
-
-      setFilteredJobs(filtered);
+    if (alertMsg) {
+      const timer = setTimeout(() => setAlertMsg(null), 3000);
+      return () => clearTimeout(timer);
     }
-  }, [jobs, searchParams, selectedLocation]);
+  }, [alertMsg]);
 
-  if (loading) {
+  if (!jobs) {
     return (
       <div className="text-center mt-5">
-        <Spinner animation="border" variant="primary" />
-      </div>
-    );
-  }
-
-  if (!filteredJobs || filteredJobs.length === 0) {
-    return (
-      <div className="text-danger text-center mt-5">
-        No jobs found matching your filters.
+        <Spinner animation="border" />
       </div>
     );
   }
 
   return (
-    <div className="job-card-container">
-      <ReusableSearch onSearch={setSearchParams} />
+    <Container className="mt-3 px-4">
+      <Form className="mb-4 bg-light rounded shadow-sm p-4">
+        <Row>
+          <Col md={4} className="mb-3">
+            <Form.Control
+              type="text"
+              placeholder="Search by Job Title"
+              name="title"
+              value={searchFields.title}
+              onChange={handleInputChange}
+            />
+          </Col>
+          <Col md={4} className="mb-3">
+            <Form.Control
+              type="text"
+              placeholder="Search by Location"
+              name="location"
+              value={searchFields.location}
+              onChange={handleInputChange}
+            />
+          </Col>
+          <Col md={4} className="mb-3">
+            <Form.Control
+              type="text"
+              placeholder="Experience (e.g. 0 - 2)"
+              name="experience"
+              value={searchFields.experience}
+              onChange={handleInputChange}
+            />
+          </Col>
+        </Row>
+      </Form>
 
-      {filteredJobs.map((job, index) => {
-        const isSaved = savedJobs.some((saved) => saved.job_id === job.job_id);
+      {alertMsg && (
+        <Alert variant={alertVariant} className="text-center">
+          {alertMsg}
+        </Alert>
+      )}
 
-        return (
-          <Card key={index} className="job-card mb-3">
-            <Card.Body>
-              <div className="job-header">
-                <h5 className="job-title">{job.job_title}</h5>
-                <div className="company-name">{job.company_name}</div>
-                <div className="rating">
-                  <FaStar color="#f4b400" /> 3.5 | 7 Reviews
+      {filteredJobs.length === 0 ? (
+        <Alert variant="warning" className="text-center mt-4">
+          No jobs found for your search.
+        </Alert>
+      ) : (
+        <Row>
+          {filteredJobs.map((job, index) => (
+            <Col md={12} key={index} className="mb-4">
+              <Card className="job-card p-3 shadow-sm">
+                <div className="d-flex justify-content-between">
+                  <div>
+                    <h5 className="mb-1">{job.job_title}</h5>
+                    <div className="text-muted fw-medium">{job.company_name}</div>
+                    <div className="text-warning mt-1">
+                      <FaStar className="me-1" /> 3.5 | 7 Reviews
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="rounded-circle bg-warning text-white d-flex justify-content-center align-items-center"
+                      style={{ width: 40, height: 40 }}
+                    >
+                      <strong>{job.company_name?.charAt(0)}</strong>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div className="job-meta">
-                <span>{job.experience || "0-1 Yrs"}</span>
-                <span className="dot">•</span>
-                <span>{job.salary || "Not Disclosed"}</span>
-                <span className="dot">•</span>
-                <span>
-                  <FaMapMarkerAlt /> {job.location}
-                </span>
-                <span className="dot">•</span>
-                <span>{job.work_mode}</span>
-              </div>
+                <div className="d-flex flex-wrap gap-3 text-muted mt-3 mb-2">
+                  <span>
+                    <FaBriefcase className="me-1" />
+                    {job.Min_work_experience} - {job.Max_work_experience} Yrs
+                  </span>
+                  <span>
+                    <FaRupeeSign className="me-1" />
+                    {job.Min_salary} - {job.Max_salary || "Not disclosed"}
+                  </span>
+                  <span>
+                    <FaMapMarkerAlt className="me-1" />
+                    {job.location}
+                  </span>
+                </div>
 
-              <div className="job-desc mt-2">
-                {job.comment || "No description available"}
-              </div>
+                <p className="text-truncate mb-2">
+                  {job.job_description || "No description provided"}
+                </p>
 
-              <div className="skills mt-2">
-                {Array.isArray(job.sub_title) ? (
-                  job.sub_title.map((skill, idx) => (
-                    <span key={idx} className="skill-tag">
-                      {skill}
+                <div className="d-flex flex-wrap mb-2">
+                  {job.sub_title?.split(",").map((item, i) => (
+                    <span key={i} className="badge bg-light text-primary border me-2 mb-1">
+                      {item.trim()}
                     </span>
-                  ))
-                ) : (
-                  <span className="skill-tag">{job.sub_title}</span>
-                )}
-              </div>
-
-              <div className="footer-row mt-3 d-flex justify-content-between">
-                <div className="posted">
-                  {job.date ? getDaysAgoText(job.date) : "Recently Posted"}
+                  ))}
+                  {job.key_skills?.split(",").map((item, i) => (
+                    <span key={i} className="badge bg-light text-primary border me-2 mb-1">
+                      {item.trim()}
+                    </span>
+                  ))}
                 </div>
 
-                <div className="d-flex align-items-center gap-3">
-                  <button
-                    className="btn btn-sm btn-primary rounded-pill"
-                    onClick={() => handleReadMore(job)}
-                  >
-                    Read More
-                  </button>
-                  <FaBookmark
-                    className="save-icon"
-                    onClick={() => handleSaveJob(job)}
-                    style={{
-                      cursor: isSaved ? "not-allowed" : "pointer",
-                      color: isSaved ? "#0d6efd" : "#000",
-                    }}
-                    title={isSaved ? "Already saved" : "Save job"}
-                  />
+                <div className="d-flex justify-content-between align-items-center">
+                  <span className="text-muted">{getDaysAgoText(job.date)}</span>
+                  <div className="d-flex align-items-center gap-3">
+                    <Button
+                      variant="outline-primary"
+                      size="sm"
+                      className="rounded-pill"
+                      onClick={() => handleSaveJob(job)}
+                      disabled={savedJobs.includes(job.id)}
+                    >
+                      {savedJobs.includes(job.id) ? "Saved" : "Save"}
+                    </Button>
+                    <FaBookmark style={{ cursor: "pointer" }} />
+                    <Button
+                      variant="outline-primary"
+                      size="sm"
+                      className="rounded-pill"
+                      onClick={() => handleReadMore(job)}
+                    >
+                      Read More
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </Card.Body>
-          </Card>
-        );
-      })}
-    </div>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      )}
+    </Container>
   );
 };
 

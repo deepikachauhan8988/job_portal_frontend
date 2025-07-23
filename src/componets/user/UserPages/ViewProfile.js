@@ -38,7 +38,7 @@ const ViewProfile = () => {
 
   const navigate = useNavigate();
   const userRegistrationData = JSON.parse(localStorage.getItem("userRegistrationData"));
-  const user_id = userRegistrationData?.id;
+  const user_id = 10;
 
   useEffect(() => {
     const fetchData = async () => {

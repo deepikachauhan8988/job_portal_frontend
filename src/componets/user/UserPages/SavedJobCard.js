@@ -66,13 +66,13 @@ const SavedJobCard = ({ job, onDelete }) => {
               >
                 <FaTrash /> Delete
               </Button>
-              <Button
+              {/* <Button
                 variant="outline-primary"
                 size="sm"
                 onClick={handleReadMore}
               >
                 Read More
-              </Button>
+              </Button> */}
             </div>
           </div>
         </Col>
