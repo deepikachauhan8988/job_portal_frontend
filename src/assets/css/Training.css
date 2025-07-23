@@ -104,4 +104,12 @@ button.accordion-button {
   .accordion-header{
     padding: 0px;
   }
+  
 }
+.comming-soon{
+  display: flex;
+  justify-content: center;
+  padding-top:120px;
+  padding-bottom:90px;
+  }
+  
