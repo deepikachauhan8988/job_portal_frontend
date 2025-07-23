@@ -1,66 +1,20 @@
 .job-card {
-  margin: 10px 50px 50px 50px;
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid #dcdcdc;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  width: 100%;
-  max-width: 940px;
+  border-radius: 15px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
-.job-header .job-title {
-  font-weight: bold;
-  font-size: 18px;
+.job-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
 }
 
-.company-name {
-  color: #666;
-  font-size: 14px;
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 }
-
-.rating {
-  font-size: 14px;
-  color: #f4b400;
-}
-
-.job-meta {
-  font-size: 14px;
-  margin-top: 8px;
-  color: #444;
-}
-
-.dot {
-  margin: 0 6px;
-}
-
-.job-desc {
-  margin-top: 10px;
-  font-size: 15px;
-  color: #333;
-}
-
-.skills {
-  margin-top: 10px;
-}
-
-.skills span {
-  background-color: #f0f0f0;
-  color: #444;
-  padding: 4px 8px;
-  margin-right: 6px;
-  border-radius: 4px;
-  font-size: 13px;
-}
-
-.footer-row {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-  font-size: 13px;
-  color: #666;
-}
-
-.save-icon {
-  cursor: pointer;
-  color: #555;
+.search-pd{
+  padding: 24px;
 }

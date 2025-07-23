@@ -80,6 +80,7 @@ const AppContent = () => {
     "/ManagerDashBoard",
     "/EmployeeDashboard",
     "/ManagerProfile",
+    "/AdminDashboard"
   ]);
   const shouldHideNavbar = hiddenPaths.has(location.pathname);
 

@@ -69,7 +69,7 @@ const ManagerGetTable = () => {
   return (
     <div className="container mt-4">
       <Card className="p-4 shadow">
-        <h4 className="mb-4">All Employees (manager ID: {managerId})</h4>
+        {/* <h4 className="mb-4">All Employees (manager ID: {managerId})</h4> */}
 
         {loading && (
           <div className="text-center">
