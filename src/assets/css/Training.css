@@ -96,6 +96,7 @@ button.accordion-button {
   
 }
 /* Responsive adjustments */
+
 @media (max-width: 768px) {
   .section-heading {
     text-align: center;

@@ -130,7 +130,7 @@ const UserRegistration = () => {
   };
 
   return (
-    <div className="register-box container">
+    <div className="register-box container training-wrapper mt-4">
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col md={7} lg={7} sm={12} className="mt-4">
