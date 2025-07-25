@@ -93,6 +93,7 @@ button.accordion-button {
  .mobile-register{
     display:none;
   }
+  
 }
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -108,6 +109,10 @@ button.accordion-button {
   .accordion-header{
     padding: 0px;
   }  
+  .comming-soon img {
+    width: 100%;
+    height: auto;
+  }
  
 }
 .comming-soon{
@@ -132,7 +137,13 @@ button.accordion-button {
   padding:10px;
 }
 .registration-card{
-  display: none ;
+  display: none;
 }
+.comming-soon{
+  justify-content: center;
+  padding-top:30px;
+  padding-bottom:30px; 
+}
+
  }
-  
+ 
