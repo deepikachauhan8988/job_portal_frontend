@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Image1 from "../../../coming-soon.jpg";
 const LiveClass = () => {
   return (
-    <div>LiveClass</div>
+    <div className='comming-soon'>
+      <img src={Image1} alt="Coming Soon" />
+    </div>
   )
 }
 

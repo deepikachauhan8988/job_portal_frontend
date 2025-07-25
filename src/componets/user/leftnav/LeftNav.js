@@ -20,7 +20,7 @@ const LeftNav = () => {
         <Col lg={2} md={2} sm={2}>
           <LeftComp onFilter={handleFilter} />
         </Col>
-        <Col lg={8} md={8} sm={8}>
+        <Col lg={8} md={8} sm={8} className="p-4">
         
           <PostJobCard jobs={filteredJobs} />
         </Col>
