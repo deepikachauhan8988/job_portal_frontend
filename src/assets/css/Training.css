@@ -62,7 +62,7 @@ border: None !important;
     border-radius: 8px 8px 0px 0px;
 }
 .accordion-button::after {
-    background-image: url("../images/down-arrow.png") !important;
+    background-image: url("../images/down-arrow.svg") !important;
     content: "";
  font-size: 12px;
 }
@@ -89,7 +89,11 @@ button.accordion-button {
     font-weight: normal;
     padding: 12px;
 }
-
+@media (min-width: 820px) {
+ .mobile-register{
+    display:none;
+  }
+}
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .section-heading {
@@ -103,8 +107,8 @@ button.accordion-button {
   }
   .accordion-header{
     padding: 0px;
-  }
-  
+  }  
+ 
 }
 .comming-soon{
   display: flex;
@@ -112,4 +116,23 @@ button.accordion-button {
   padding-top:120px;
   padding-bottom:90px;
   }
+.bullet-points{
+  color:var(--brjp-bg-light-green-bullet);
+  font-size:16px;
+  margin-right:4px;
+}
+@media (max-width: 575.98px) { 
+  .main-contanier {
+    padding: 0px;
+}
+.p-4 {
+    padding: 0px !important;
+}
+.card {
+  padding:10px;
+}
+.registration-card{
+  display: none ;
+}
+ }
   

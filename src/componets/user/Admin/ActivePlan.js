@@ -86,7 +86,7 @@ const ActivePlan = ({ plan }) => {
             </div>
             <h3 class="heading">Growth Plan Free</h3>
             <p>
-              For growing teams hiring regularly <br />
+              For Grooming teams hiring regularly <br />
               across departments.
             </p>
             <div className="pricing-content">

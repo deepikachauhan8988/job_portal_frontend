@@ -59,7 +59,7 @@ function NavBar() {
                 </NavDropdown.Item>
               </NavDropdown>
 
-              <NavDropdown title="Growing Class" id="growing-class-dropdown">
+              <NavDropdown title="Grooming Class" id="Grooming-class-dropdown">
                 <NavDropdown.Item as={Link} to="/Communication">Communication Skills</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/SelfConfidence">Self-Confidence & Power Dressing</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/InterviewSkill">Interview Skills</NavDropdown.Item>
