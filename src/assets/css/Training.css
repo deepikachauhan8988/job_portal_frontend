@@ -2,25 +2,27 @@
   font-size: 1.8rem;
   font-weight: bold;
   color: #2c3e50;
-  
+
   padding: 12px;
 }
 
 /* Accordion Styles */
 .accordion-button {
   font-weight: 600;
-  background-color:var(--brjp-main-primary-blue) !important;
+  background-color: var(--brjp-main-primary-blue) !important;
   padding: 16px;
   transition: background-color 0.3s ease;
   color: white;
   border-radius: 12px !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
 }
+
 .accordion-header {
-    margin-bottom: 0;
-    padding: 8px;
+  margin-bottom: 0;
+  padding: 8px;
 }
+
 /* .accordion-button:hover {
   background-color: #e2e6ea !important;
 } */
@@ -31,10 +33,10 @@
 
 /* Module Card Styles */
 .module-card {
-    background-color: #e4e9ee;
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  background-color: #e4e9ee;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .module-card ul {
@@ -43,29 +45,34 @@
   line-height: 1.6;
   color: #333;
 }
+
 .training-wrapper {
   background-color: white;
   border-radius: 12px;
   padding: 20px;
   border-radius: 8px 8px 0px 0px;
 }
-.training-wrapper .accordion-item{
-border: None !important;
+
+.training-wrapper .accordion-item {
+  border: None !important;
 }
 
-.main-contanier{
-    padding: 12px;
+.main-contanier {
+  padding: 12px;
 }
+
 .accordion-button:not(.collapsed) {
-    color: var(--awc-white) !important;
-    background-color: var(--awc-blue-hover) !important;
-    border-radius: 8px 8px 0px 0px;
+  color: var(--awc-white) !important;
+  background-color: var(--awc-blue-hover) !important;
+  border-radius: 8px 8px 0px 0px;
 }
+
 .accordion-button::after {
-    background-image: url("../images/down-arrow.svg") !important;
-    content: "";
- font-size: 12px;
+  background-image: url("../images/down-arrow.svg") !important;
+  content: "";
+  font-size: 12px;
 }
+
 /* Registration Card */
 .registration-card {
   padding: 30px;
@@ -84,66 +91,38 @@ border: None !important;
   font-size: 0.95rem;
   color: #666;
 }
+
 button.accordion-button {
   font-size: 14px !important;
-    font-weight: normal;
-    padding: 12px;
+  font-weight: normal;
+  padding: 12px;
 }
-@media (min-width: 820px) {
- .mobile-register{
-    display:none;
-  }
-  
-}
+
 /* Responsive adjustments */
 
 @media (max-width: 768px) {
   .section-heading {
     text-align: center;
   }
-.main-mt-0{
-    margin:0px !important;
-}
+
+  .main-mt-0 {
+    margin: 0px !important;
+  }
+
   .registration-card {
     margin-top: 20px;
   }
-  .accordion-header{
+
+  .accordion-header {
     padding: 0px;
-  }  
-  .comming-soon img {
-    width: 100%;
-    height: auto;
   }
- 
+
 }
-.comming-soon{
+
+.comming-soon {
   display: flex;
   justify-content: center;
-  padding-top:120px;
-  padding-bottom:90px;
-  }
-.bullet-points{
-  color:var(--brjp-bg-light-green-bullet);
-  font-size:16px;
-  margin-right:4px;
+  padding-top: 120px;
+  padding-bottom: 90px;
 }
-@media (max-width: 575.98px) { 
-  .main-contanier {
-    padding: 0px;
-}
-.p-4 {
-    padding: 0px !important;
-}
-.card {
-  padding:10px;
-}
-.registration-card{
-  display: none;
-}
-.comming-soon{
-  justify-content: center;
-  padding-top:30px;
-  padding-bottom:30px; 
-}
- }
- 
+
