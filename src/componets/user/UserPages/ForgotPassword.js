@@ -53,7 +53,7 @@ const ForgotPassword = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post("http://127.0.0.1:8000/api/Forgetpassword/", payload);
+      const response = await axios.post("https://adminnanda.in/Job/api/Forgetpassword/", payload);
 
       setMessage(response.data.message || "Password reset successful.");
       setFormData({ identifier: "", password: "", confirm_password: "" });

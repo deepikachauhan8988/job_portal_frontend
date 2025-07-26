@@ -1,35 +1,49 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-
+import { logoutUser } from "../../../api/auth"; 
 function NavBar() {
   const navigate = useNavigate();
   const location = useLocation();
   const isLoggedIn = !!localStorage.getItem("user_id");
 
-  const handleLogout = () => {
-    localStorage.removeItem("savedResumeData");
-    localStorage.removeItem("userRegistrationData");
-    localStorage.removeItem("user_id");
-    localStorage.removeItem("selected_job_id");
-    localStorage.removeItem("access_token1");
-    localStorage.removeItem("refresh_token1");
-    localStorage.removeItem("googleUser");
-    localStorage.removeItem("autoId");
-    localStorage.removeItem("job_title");
-    localStorage.removeItem("job_location");
-    localStorage.removeItem("job_experience");
+ const handleLogout = async () => {
+  const refreshToken = localStorage.getItem("refresh_token");
+console.log("refresh",refreshToken)
+  try {
+    if (refreshToken) {
+      await logoutUser(refreshToken);
+    }
+  } catch (err) {
+    console.error("Logout API error:", err?.response?.data || err.message);
+    // Still continue to log out client-side
+  }
 
-    alert("Logout successfully");
-    navigate("/");
-  };
+  // Clear everything client-side
+  localStorage.removeItem("savedResumeData");
+  localStorage.removeItem("userRegistrationData");
+  localStorage.removeItem("user_id");
+  localStorage.removeItem("selected_job_id");
+  localStorage.removeItem("access_token1");
+  localStorage.removeItem("access_token1");
+  localStorage.removeItem("refresh-token-profile");
+  localStorage.removeItem("refresh_token1");
+  localStorage.removeItem("googleUser");
+  localStorage.removeItem("autoId");
+  localStorage.removeItem("job_title");
+  localStorage.removeItem("job_location");
+  localStorage.removeItem("job_experience");
+
+  alert("Logout successfully");
+  navigate("/");
+};
 
   return (
     <>
       <Navbar expand="lg" className="nav-top-bg main-nav" sticky="top">
         <Container>
           <Navbar.Brand as={Link} to="/">
-            BrainRock Job Portal
+            BR Carrier
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

@@ -66,7 +66,7 @@ const JobDetails = () => {
     setIsApplying(true);
     setApplyError("");
 
-    const employeeId = 13; // localStorage.getItem("employee_id");
+    const employeeId = localStorage.getItem("employee_id"); // localStorage.getItem("employee_id");
     const jobId = "703a132aecc7"; // localStorage.getItem("job_id");
 
     try {

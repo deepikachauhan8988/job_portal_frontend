@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 export const UserRegistration = async (formDataToSend) => {
   try {
     const res = await axios.post(
-      "http://127.0.0.1:8000/api2/custom-resume/",
+      "https://adminnanda.in/Job/api2/custom-resume/",
       formDataToSend,
       {
         headers: {
@@ -254,33 +254,37 @@ const Profile = () => {
 
           {/* Education */}
           <div className="educat-desin">
-            <h5 className="mt-4 mb-3">Educational Details</h5>
-            <Button
-              variant="outline-primary"
-              className="mb-3"
-              onClick={addEducation}
-            >
-              <FaPlusCircle className="me-2" />
-              Add Education
-            </Button>
+          <h5 className="mt-4 mb-3">Educational Details</h5>
+          <Button
+            variant="outline-primary"
+            className="mb-3"
+            onClick={addEducation}
+          >
+            <FaPlusCircle className="me-2" /> Add Education
+          </Button>
 
-            <Row className="fw-bold text-secondary mb-2">
-              <Col md={2}>Qualification</Col>
-              <Col md={3}>School/College</Col>
-              <Col md={2}>Board/University</Col>
-              <Col md={2}>Year</Col>
-              <Col md={2}>%</Col>
-              <Col md={1}>Action</Col>
-            </Row>
+          <Row className="fw-bold text-secondary mb-2">
+            <Col md={2}>Qualification</Col>
+            <Col md={3}>School/College</Col>
+            <Col md={2}>Board/University</Col>
+            <Col md={2}>Year</Col>
+            <Col md={2}>%</Col>
+            <Col md={1}>Action</Col>
+          </Row>
 
-            {educations.map((edu, index) => (
+          {educations.map((edu, index) => {
+            const tenthYear = educations.find(e => e.qualification === "10th")?.year;
+            const yearList = Array.from({ length: new Date().getFullYear() - 1989 }, (_, i) => 1990 + i);
+            const filteredYears = edu.qualification === "12th" && tenthYear
+              ? yearList.filter(y => y > parseInt(tenthYear))
+              : yearList;
+
+            return (
               <Row key={index} className="mb-2">
                 <Col md={2}>
                   <Form.Select
                     value={edu.qualification}
-                    onChange={(e) =>
-                      handleEducationChange(index, "qualification", e.target.value)
-                    }
+                    onChange={(e) => handleEducationChange(index, "qualification", e.target.value)}
                   >
                     <option value="">Select</option>
                     <option value="10th">10th</option>
@@ -290,55 +294,30 @@ const Profile = () => {
                     <option value="Post Graduation">Post Graduation/Master</option>
                   </Form.Select>
                 </Col>
-
                 <Col md={3}>
                   {edu.qualification === "Graduation" || edu.qualification === "Post Graduation" ? (
                     <Form.Select
                       className="mb-3"
                       value={edu.courseDetail || ""}
-                      onChange={(e) =>
-                        handleEducationChange(index, "courseDetail", e.target.value)
-                      }
+                      onChange={(e) => handleEducationChange(index, "courseDetail", e.target.value)}
                     >
                       <option value="">Select Course</option>
-                      {edu.qualification === "Graduation" && (
-                        <>
-                          <option value="BA">BA</option>
-                          <option value="BTech">BTech</option>
-                          <option value="BSc">BSc</option>
-                          <option value="BCom">BCom</option>
-                        </>
-                      )}
-                      {edu.qualification === "Post Graduation" && (
-                        <>
-                          <option value="MA">MA</option>
-                          <option value="MTech">MTech</option>
-                          <option value="MSc">MSc</option>
-                          <option value="MCom">MCom</option>
-                          <option value="MBA">MBA</option>
-                          <option value="MCA">MCA</option>
-                          <option value="PhD">PhD</option>
-                        </>
-                      )}
+                      {edu.qualification === "Graduation" && ["BA", "BTech", "BSc", "BCom"].map(c => <option key={c} value={c}>{c}</option>)}
+                      {edu.qualification === "Post Graduation" && ["MA", "MTech", "MSc", "MCom", "MBA", "MCA", "PhD"].map(c => <option key={c} value={c}>{c}</option>)}
                     </Form.Select>
                   ) : (
                     <Form.Control
                       className="mb-3"
                       placeholder="School/College"
                       value={edu.school || ""}
-                      onChange={(e) =>
-                        handleEducationChange(index, "school", e.target.value)
-                      }
+                      onChange={(e) => handleEducationChange(index, "school", e.target.value)}
                     />
                   )}
                 </Col>
-
                 <Col md={2}>
                   <Form.Select
                     value={edu.board}
-                    onChange={(e) =>
-                      handleEducationChange(index, "board", e.target.value)
-                    }
+                    onChange={(e) => handleEducationChange(index, "board", e.target.value)}
                   >
                     <option value="">Select Board</option>
                     <option value="CBSE">CBSE</option>
@@ -347,36 +326,22 @@ const Profile = () => {
                     <option value="Other">Other</option>
                   </Form.Select>
                 </Col>
-
                 <Col md={2}>
                   <Form.Select
                     value={edu.year}
-                    onChange={(e) =>
-                      handleEducationChange(index, "year", e.target.value)
-                    }
+                    onChange={(e) => handleEducationChange(index, "year", e.target.value)}
                   >
                     <option value="">Select Year</option>
-                    {Array.from({ length: new Date().getFullYear() - 1989 }, (_, i) => {
-                      const year = 1990 + i;
-                      return (
-                        <option key={year} value={year}>
-                          {year}
-                        </option>
-                      );
-                    })}
+                    {filteredYears.map(year => <option key={year} value={year}>{year}</option>)}
                   </Form.Select>
                 </Col>
-
                 <Col md={2}>
                   <Form.Control
                     value={edu.percentage}
                     placeholder="%"
-                    onChange={(e) =>
-                      handleEducationChange(index, "percentage", e.target.value)
-                    }
+                    onChange={(e) => handleEducationChange(index, "percentage", e.target.value)}
                   />
                 </Col>
-
                 <Col md={1}>
                   <Button
                     variant="danger"
@@ -387,8 +352,9 @@ const Profile = () => {
                   </Button>
                 </Col>
               </Row>
-            ))}
-          </div>
+            );
+          })}
+        </div>
 
           {/* Course Type */}
           <Row>

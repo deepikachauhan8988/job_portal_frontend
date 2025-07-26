@@ -40,14 +40,16 @@ const UserProfile = () => {
 
         // Fix for relative PDF URL
         let resumeUrl = resumeData.generated_pdf;
+        console.log("api resume", resumeUrl);
+
         if (resumeUrl && !resumeUrl.startsWith("http")) {
-          resumeUrl = `${BASE_URL}${resumeUrl.startsWith("/") ? "" : "/"}${resumeUrl}`;
+          resumeUrl = `${resumeUrl.startsWith("http") ? "" : "/"}${resumeUrl}`;
         }
 
         // Fix for relative image URL
         let photoURL = userBasic.photo;
         if (photoURL && !photoURL.startsWith("http")) {
-          photoURL = `${BASE_URL}${photoURL.startsWith("/") ? "" : "/"}${photoURL}`;
+          photoURL = `${photoURL.startsWith("/") ? "" : "/"}${photoURL}`;
         }
 
         const mergedData = {
@@ -74,7 +76,9 @@ const UserProfile = () => {
   const handleUpdate = (updatedUser) => {
     let updatedPhoto = updatedUser.photo;
     if (updatedPhoto && !updatedPhoto.startsWith("http")) {
-      updatedPhoto = `${BASE_URL}${updatedPhoto.startsWith("/") ? "" : "/"}${updatedPhoto}`;
+      updatedPhoto = `${BASE_URL}${
+        updatedPhoto.startsWith("/") ? "" : "/"
+      }${updatedPhoto}`;
     }
 
     setUserData((prev) => ({
@@ -88,9 +92,15 @@ const UserProfile = () => {
 
   const renderField = (label, value) => (
     <Row className="mb-2" key={label}>
-      <Col sm={4}><strong>{label}:</strong></Col>
+      <Col sm={4}>
+        <strong>{label}:</strong>
+      </Col>
       <Col sm={8}>
-        {value ? <span>{value}</span> : <span className="text-muted">Not provided</span>}
+        {value ? (
+          <span>{value}</span>
+        ) : (
+          <span className="text-muted">Not provided</span>
+        )}
       </Col>
     </Row>
   );
@@ -101,19 +111,27 @@ const UserProfile = () => {
       <div className="mb-3" key={label}>
         <h6 className="text-secondary">{label}</h6>
         <Row className="mb-2">
-          <Col sm={4}><strong>{detail.school ? "School:" : "College:"}</strong></Col>
+          <Col sm={4}>
+            <strong>{detail.school ? "School:" : "College:"}</strong>
+          </Col>
           <Col sm={8}>{detail.school || detail.course || "N/A"}</Col>
         </Row>
         <Row>
-          <Col sm={4}><strong>Board/University:</strong></Col>
+          <Col sm={4}>
+            <strong>Board/University:</strong>
+          </Col>
           <Col sm={8}>{detail.board || "N/A"}</Col>
         </Row>
         <Row>
-          <Col sm={4}><strong>Year:</strong></Col>
+          <Col sm={4}>
+            <strong>Year:</strong>
+          </Col>
           <Col sm={8}>{detail.year || "N/A"}</Col>
         </Row>
         <Row>
-          <Col sm={4}><strong>Marks:</strong></Col>
+          <Col sm={4}>
+            <strong>Marks:</strong>
+          </Col>
           <Col sm={8}>{detail.marks || "N/A"}%</Col>
         </Row>
       </div>
@@ -130,7 +148,9 @@ const UserProfile = () => {
   }
 
   if (!userData) {
-    return <div className="text-center text-danger mt-4">No profile data found.</div>;
+    return (
+      <div className="text-center text-danger mt-4">No profile data found.</div>
+    );
   }
 
   return (
@@ -138,7 +158,11 @@ const UserProfile = () => {
       <Card className="p-4 shadow-lg rounded-4 mt-5 mb-5">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h3 className="text-success fw-bold">My Profile</h3>
-          <Button className="rounded-pill px-4" variant="primary" onClick={() => setShowEdit(true)}>
+          <Button
+            className="rounded-pill px-4"
+            variant="primary"
+            onClick={() => setShowEdit(true)}
+          >
             Edit Profile
           </Button>
         </div>
@@ -170,8 +194,14 @@ const UserProfile = () => {
             </div>
 
             <h5 className="fw-bold mt-3">{userData.full_name}</h5>
-            <p className="text-muted"><FaEnvelope className="me-2" />{userData.email}</p>
-            <p><FaPhone className="me-2" />{userData.phone}</p>
+            <p className="text-muted">
+              <FaEnvelope className="me-2" />
+              {userData.email}
+            </p>
+            <p>
+              <FaPhone className="me-2" />
+              {userData.phone}
+            </p>
 
             {userData.linkedin_url && (
               <a
@@ -187,7 +217,9 @@ const UserProfile = () => {
 
           <Col md={8}>
             <section className="mb-4">
-              <h5 className="text-primary border-bottom pb-1 mb-3">Personal Information</h5>
+              <h5 className="text-primary border-bottom pb-1 mb-3">
+                Personal Information
+              </h5>
               {renderField("Address Line 1", userData.adress1)}
               {renderField("Address Line 2", userData.adress2)}
               {renderField("City", userData.city)}
@@ -199,11 +231,16 @@ const UserProfile = () => {
               {renderField("Hobbies", userData.Hobbies)}
               {renderField("Full Time", userData.Full_time)}
               {renderField("Distance Learning", userData.Distance_learning)}
-              {renderField("Professional Experience", userData.Proffesional_experience)}
+              {renderField(
+                "Professional Experience",
+                userData.Proffesional_experience
+              )}
             </section>
 
             <section className="mb-4">
-              <h5 className="text-primary border-bottom pb-1 mb-3">Education</h5>
+              <h5 className="text-primary border-bottom pb-1 mb-3">
+                Education
+              </h5>
               {renderEducation("10th Details", userData.Tenth_Details)}
               {renderEducation("12th Details", userData.Twelth_Details)}
               {renderEducation("Diploma", userData.Diploma_Details)}
@@ -214,7 +251,9 @@ const UserProfile = () => {
             <section>
               <h5 className="text-primary border-bottom pb-1 mb-3">Resume</h5>
               <Row className="mb-3">
-                <Col sm={4}><strong>Resume (PDF):</strong></Col>
+                <Col sm={4}>
+                  <strong>Resume (PDF):</strong>
+                </Col>
                 <Col sm={8}>
                   {userData.generated_pdf ? (
                     <a
@@ -243,7 +282,12 @@ const UserProfile = () => {
         </Row>
       </Card>
 
-      <EditProfilePopup show={showEdit} onHide={() => setShowEdit(false)} userData={userData} onUpdate={handleUpdate} />
+      <EditProfilePopup
+        show={showEdit}
+        onHide={() => setShowEdit(false)}
+        userData={userData}
+        onUpdate={handleUpdate}
+      />
     </Container>
   );
 };

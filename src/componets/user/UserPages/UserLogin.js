@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { googleLogin, loginUser } from "../../../api/auth";
 import { jwtDecode } from "jwt-decode";
 import "../../../assets/css/LoginForm.css";
+import Cookies from "js-cookie";
+
 
 const UserLogin = () => {
   const navigate = useNavigate();
@@ -46,16 +48,45 @@ const UserLogin = () => {
 
   try {
     const data = await loginUser(payload);
-    localStorage.setItem("access_token1", data.access);
-    localStorage.setItem("refresh_token1", data.refresh);
-    localStorage.setItem("user_id", data.user_id);
+    console.log("data ",data)
+    
 
+console.log("data", data.access)
+
+    localStorage.setItem("user_id", data.user_id);
+  
+ localStorage.setItem("access_token1", data.access_token);
+  localStorage.setItem("refresh_token1", data.refresh_token);
     const hasSearched = localStorage.getItem("job_title") === "true";
+
     navigate(hasSearched ? "/" : "/");
-  } catch (err) {
-    console.error("Login error:", err);
-    setErrors(err?.response?.data?.detail || "Invalid login credentials.");
+    const accessToken = data.access;
+  const refreshToken = data.refresh;
+
+ 
+
+  // Optional: store in localStorage or cookies
+ 
+  } 
+  catch (err) {
+  if (err.response) {
+    // Server responded with a status outside 2xx
+    console.error(" Server Response Error:");
+    console.error("Status:", err.response.status);
+    console.error("Headers:", err.response.headers);
+    console.error("Data:", err.response.data);
+    setErrors(err.response.data.detail || "Invalid login credentials.");
+  } 
+  else {
+    // Something went wrong setting up the request
+    console.error(" Error Setting Up Request:");
+    console.error("Message:", err.message);
+    setErrors("Something went wrong. Please try again.");
   }
+
+  console.error(" Config:", err.config);
+}
+
 };
 
 

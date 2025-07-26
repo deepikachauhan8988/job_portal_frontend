@@ -34,7 +34,6 @@ const PostJobCard = ({ jobs }) => {
 
   useEffect(() => {
     if (!jobs) return;
-
     const title = searchFields.title.toLowerCase().trim();
     const location = searchFields.location.toLowerCase().trim();
     const experience = searchFields.experience.trim();

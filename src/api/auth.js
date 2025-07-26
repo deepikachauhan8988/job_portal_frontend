@@ -1,11 +1,14 @@
 // src/api/auth.js
 import axios from "axios";
+import Cookies from "js-cookie";
+import { BASE_URLL } from "../../src/api/AxiosBaseUrl";
+axios.defaults.withCredentials = true;
 
 // Register API
 export const registerUser = async (userData) => {
   try {
     const response = await axios.post(
-      "http://127.0.0.1:8000/api/Registerpost/",
+      `${BASE_URLL}api/UserRegistration/`,
       userData
     );
     return response.data;
@@ -17,17 +20,15 @@ export const registerUser = async (userData) => {
 // api/auth.js
 
 export const registerUserupdate = async (userId, formData) => {
-  const token = localStorage.getItem("access_token");
-  const userRegistrationData = JSON.parse(
-    localStorage.getItem("user_id")
-  );
+  // const token = localStorage.getItem("access_token");
+  // const userRegistrationData = JSON.parse(localStorage.getItem("user_id"));
   const user_id = localStorage.getItem("user_id");
   const response = await axios.put(
-    `http://127.0.0.1:8000/api/UserGetview/${user_id}/`, // note the slash
+    `https://adminnanda.in/Job/api/Registerpost${user_id}/`, 
     formData,
     {
       headers: {
-        "Content-Type": "multipart/form-data", // required for file uploads
+        "Content-Type": "multipart/form-data", 
       },
     }
   );
@@ -47,7 +48,7 @@ export const getPostedJobById = async () => {
 
   try {
     const response = await axios.get(
-      `http://127.0.0.1:8000/api3/Emplopostedjob/${employee_id}/`
+      `https://adminnanda.in/Job/api3/PostJonbyemloyee/`
     );
     return response.data;
   } catch (error) {
@@ -56,13 +57,44 @@ export const getPostedJobById = async () => {
   }
 };
 
-// 1. Standard login (email or phone + password)
-export const loginUser = async ({ email, password }) => {
-  const response = await axios.post(`http://127.0.0.1:8000/api/login/`, {
-    email,
-    password,
-  });
-  return response.data; // { access: "...", refresh: "...", ... }
+
+const api = axios.create({
+  baseURL: `${BASE_URLL}api/`,
+});
+
+export const loginUser = async ({ email, phone, password }) => {
+  const payload = { password };
+  if (email) payload.email = email;
+  if (password) payload.password = password;
+
+  const response = await api.post(`https://adminnanda.in/Job/api/login/`, payload);
+  const { access, refresh, user } = response.data;
+  console.log("dataa", response.data); 
+   console.log("Access Token:", access);
+    console.log("Refresh Token:", refresh);
+  return response.data;
+
+};
+
+// export const googleLogin = async ({ token }) => {
+//   const response = await api.post(`google-login/`, { token });
+//   return response.data;
+// }
+
+export const logoutUser = async (refreshToken) => {
+  const accessToken = localStorage.getItem("access_token");
+
+  return await axios.post(
+    "https://adminnanda.in/Job/api/logout/",
+    { refresh: refreshToken },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      withCredentials: true, // only if using cookies
+    }
+  );
 };
 
 export const getJobSuggestions = async (query) => {
@@ -78,6 +110,8 @@ export const getJobSuggestions = async (query) => {
     throw error.response?.data || { detail: "Suggestion fetch failed" };
   }
 };
+
+// save post get
 export const fetchSavedJobsByUserId = async (userId) => {
   const response = await axios.get(
     `http://127.0.0.1:8000/api/Savedpost/${userId}/`
@@ -85,6 +119,7 @@ export const fetchSavedJobsByUserId = async (userId) => {
   return response.data;
 };
 
+// save post
 export const saveJobPost = async (jobData, token) => {
   const response = await axios.post(
     "http://127.0.0.1:8000/api/Saved-post/",
@@ -121,7 +156,7 @@ export const savedJobPostView = async () => {
   }
 };
 
-// DELETE saved job by job_id
+
 // DELETE saved job by job_id
 export const deleteSavedJobById = async (selected_job_id, token) => {
   try {
@@ -230,12 +265,13 @@ export const GetUserRegistration = async () => {
   const storedUser = localStorage.getItem("userRegistrationData");
 
   const userObj = JSON.parse(storedUser);
-  const userId = userObj.id; // ✅ safely access id
+  const userId = userObj.id; 
 
   console.log("user_id_registration", userId);
   try {
     const res = await axios.get(
-      `http://127.0.0.1:8000/api/UserGetview/${userId}/`
+      `https://adminnanda.in/Job/api/Registerpost/${userId}/`,
+      (axios.defaults.withCredentials = true)
     );
     console.log("User Data:", res.data);
 
@@ -253,55 +289,89 @@ export const UserRegistration = async () => {
     const res = await axios.post(`http://127.0.0.1:8000/api2/custom-resume/`);
     console.log("User Data resume:", res.data);
 
-    return res.data; // return the actual data
+    return res.data; 
   } catch (err) {
     console.error("Error fetching user data:", err);
     return null;
   }
 };
 
-export const fetchResumeWithUserDetails = async () => {
-  try {
-    const rawUserId =10; // <-- from localStorage
-    console.log("Raw user_id from localStorage:", rawUserId);
-
-    if (!rawUserId) throw new Error("User ID not found in localStorage");
-
-      // ✅ Ensure string before replace
-
-    const res = await axios.get(`http://127.0.0.1:8000/api2/resume-detail/?user=${rawUserId}`);
-    const data = res.data;
-
-    console.log("Resume API Response:", data);
-
-    if (data.resume && !data.resume.startsWith("http")) {
-      data.resume = `http://127.0.0.1:8000${data.resume}`;
-    }
-
-    return data;
-  } catch (error) {
-    console.error("Error fetching resume details:", error?.response?.data || error.message || error);
-    throw error;
-  }
-};
-
-
-// Fetch user basic profile (name, email, phone)
+// user profile basic details
 export const fetchUserProfileById = async (userId) => {
   try {
-    const storedUser = localStorage.getItem("user_id");
-    const userObj = JSON.parse(storedUser);
-    // ✅ safely access id
-    console.log("user_id_registration", userId);
+    const accessToken11 = localStorage.getItem("access_token1");
+    const storedUserId = localStorage.getItem("user_id");
+
+    // if (!accessToken11 || !storedUserId) {
+    //   throw new Error("Access token or user ID not found in localStorage.");
+    // }
+
+    console.log("user_id_registration", storedUserId);
+
     const res = await axios.get(
-      `http://127.0.0.1:8000/api/UserGetview/${userId}/`
+      `https://adminnanda.in/Job/api/Registerpost/${storedUserId}/`,
+
+      // {
+      //   headers: {
+      //     Authorization: `Bearer ${accessToken11}`, // ✅ include access token here
+      //   },
+      // }
+     
     );
+
     return res.data;
   } catch (error) {
     console.error("Error fetching user profile:", error);
     throw error;
   }
 };
+// resume profile
+export const fetchResumeWithUserDetails = async () => {
+  try {
+    const rawUserId = localStorage.getItem("user_id");
+    const accessToken11 = localStorage.getItem("access_token1");
+    const token = Cookies.get("access_token1");
+    console.log("access", token);
+
+    // if (!rawUserId || !accessToken11) {
+    //   throw new Error("User ID or Access Token not found in localStorage");
+    // }
+
+    console.log("User ID:", rawUserId);
+    console.log("Access Token:", accessToken11);
+
+    const res = await axios.get(
+      `https://adminnanda.in/Job/api2/resume-detail/?user=${rawUserId}`,
+      
+
+      // {
+      //   headers: {
+      //     Authorization: `Bearer ${accessToken11}`, // ✅ include access token here
+      //   },
+      // }
+    );
+
+    const data = res.data;
+
+    // Adjust resume path if it's a relative URL
+    if (data.resume && !data.resume.startsWith("http")) {
+      data.resume = `https://adminnanda.in${data.resume}`;
+    }
+
+    return data;
+  } catch (error) {
+    console.error(
+      "Error fetching resume details:",
+      error?.response?.data || error.message || error
+    );
+    throw error;
+  }
+};
+
+// Fetch user basic profile (name, email, phone)
+
+
+
 // src/api/auth.js
 
 export const registerAdmin = async (formData) => {
@@ -316,5 +386,9 @@ export const registerAdmin = async (formData) => {
     if (value) data.append(key, value);
   });
 
-  return await axios.post(`http://127.0.0.1:8000/api3/admin_registration/`, data, config);
+  return await axios.post(
+    `http://127.0.0.1:8000/api3/admin_registration/`,
+    data,
+    config
+  );
 };

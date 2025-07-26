@@ -3,13 +3,9 @@ import { Form, Button, Container, Row, Col, Card, Image } from "react-bootstrap"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const qualificationOptions = [
-  "10th", "12th", "Diploma", "Graduation", "Post Graduation", "PhD"
-];
-
+const qualificationOptions = ["10th", "12th", "Diploma", "Graduation", "Post Graduation", "PhD"];
 const boardOptions = ["CBSE", "ICSE", "State Board", "Other"];
 const yearOptions = Array.from({ length: 30 }, (_, i) => 2025 - i);
-const percentageOptions = Array.from({ length: 101 }, (_, i) => i); // 0 to 100%
 
 const ViewProfile = () => {
   const [formData, setFormData] = useState({
@@ -37,8 +33,7 @@ const ViewProfile = () => {
   ]);
 
   const navigate = useNavigate();
-  const userRegistrationData = JSON.parse(localStorage.getItem("userRegistrationData"));
-  const user_id = 10;
+  const user_id = localStorage.getItem("user_id");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -113,7 +108,9 @@ const ViewProfile = () => {
 
     payload.append("education_details", JSON.stringify(educationList));
     if (photo) payload.append("photo", photo);
-    if (resume) payload.append("resume", resume);
+    if (resume instanceof File) {
+      payload.append("resume", resume);
+    }
 
     try {
       await axios.post("https://adminnanda.in/Job/api2/custom-resume/", payload, {
@@ -134,7 +131,6 @@ const ViewProfile = () => {
         <Form onSubmit={handleSubmit}>
           <Row>
             <Col md={6}>
-              {/* Basic info */}
               <Form.Group className="mb-3">
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control name="full_name" value={formData.full_name} onChange={handleChange} />
@@ -167,7 +163,6 @@ const ViewProfile = () => {
             </Col>
 
             <Col md={6}>
-              {/* Address and extras */}
               <Form.Group className="mb-3"><Form.Label>Address Line 1</Form.Label>
                 <Form.Control name="adress1" value={formData.adress1} onChange={handleChange} />
               </Form.Group>
@@ -265,8 +260,17 @@ const ViewProfile = () => {
             <Form.Control type="file" accept=".pdf" onChange={(e) => setResume(e.target.files[0])} />
           </Form.Group>
 
-          <div className="text-center">
-            <Button type="submit" variant="success" className="px-5 rounded-pill">Save Profile</Button>
+          <div className="text-center d-flex justify-content-center gap-3">
+            <Button type="submit" variant="success" className="px-4 rounded-pill">Save Profile</Button>
+            <Button
+              type="button"
+              variant="secondary"
+              className="px-4 rounded-pill"
+              onClick={() => navigate("/UserProfile")}
+            >
+              
+              Cancel
+            </Button>
           </div>
         </Form>
       </Card>
