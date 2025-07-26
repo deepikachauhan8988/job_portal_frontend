@@ -47,7 +47,7 @@ console.log("refresh",refreshToken)
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto nav-list gap-4 justify-content-end flex-grow-1 d-flex">
+            <Nav className="me-auto nav-list gap-4 justify-content-end flex-grow-1 d-flex nav-down">
               <NavDropdown title="Training" id="training-dropdown">
                 <NavDropdown.Item as={Link} to="/TrainingReact">
                   React JS

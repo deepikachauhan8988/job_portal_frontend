@@ -130,10 +130,10 @@ const UserRegistration = () => {
   };
 
   return (
-    <div className="register-box container">
+    <div className="register-box container training-wrapper mt-4">
       <Form onSubmit={handleSubmit}>
-        <Row>
-          <Col md={7} lg={7} sm={12} className="mt-4">
+        <Row className="">
+          <Col md={7} lg={7} sm={12} className="mt-4 p-4">
             <h4 className="fw-bold">Registration</h4>
             <p className="text-muted mb-4">Register now to explore personalized services.</p>
 

@@ -131,9 +131,10 @@ a {
 }
 
 .custom-nav-btn-login:hover {
-  background-color: #025ade;
+  background-color: #0d6efd !important;
   color: var(--brjp-white) !important;
 }
+
 
 .custom-nav-btn {
   background-color: orange;
@@ -372,6 +373,15 @@ label.form-label {
 }
 
 
+.navbar-toggler-icon{
+background-image:url(../assets/images/menu-icon.svg) !important;
+}
+.navbar-toggler
+
+{
+  border: 1px #ffffff3d solid !important;
+}
+
 
 
 
@@ -381,7 +391,6 @@ label.form-label {
     margin: 0px !important;
 
   }
-
   .filter-sidebar {
 
     width: 374px !important;
