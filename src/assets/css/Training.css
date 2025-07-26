@@ -116,8 +116,8 @@ button.accordion-button {
   .accordion-header {
     padding: 0px;
   }
-
 }
+
 
 .comming-soon {
   display: flex;
@@ -126,3 +126,38 @@ button.accordion-button {
   padding-bottom: 90px;
 }
 
+@media (max-width: 576px) {
+  .accordion-header {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .p-4 {
+    padding: .5rem !important;
+  }
+  .main-contanier {
+    padding: 0px;
+  }
+  .down-register {
+    display: none;
+  }
+  .comming-soon img{
+    width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  }
+}
+
+
+@media (min-width: 820px) {
+  .mobile-register-now {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .mobile-register-now {
+    display: none;
+  }
+}

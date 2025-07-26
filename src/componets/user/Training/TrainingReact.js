@@ -227,14 +227,14 @@ const TrainingReact = () => {
 
             {/* Right Column (Registration) */}
             <Col md={4} sm={12}>
-              <Card className="registration-card">
+              <Card className="registration-card down-register">
                 <h4 className="text-center">📋 Registration</h4>
                 <p className="text-muted text-center">
                   Enroll now to start your React journey!
                 </p>
-                <div className="text-center mt-3">
+                <div className="text-center mt-3 ">
                   <Link to="/UserRegistration">
-                  <button className=" btn btn-primary rounded-pill px-4">
+                  <button className=" btn btn-primary rounded-pill px-4 ">
                     Register Now
                   </button>
                   </Link>

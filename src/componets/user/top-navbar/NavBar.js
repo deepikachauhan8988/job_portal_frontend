@@ -32,6 +32,7 @@ function NavBar() {
 
   return (
     <>
+    <div className="nav-mg">
       <Navbar
         expand="lg"
         expanded={expanded}
@@ -101,6 +102,7 @@ function NavBar() {
           </Navbar.Collapse>
         </div>
       </Navbar>
+      </div>
     </>
   );
 }
