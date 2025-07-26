@@ -131,6 +131,7 @@ const UserRegistration = () => {
 
   return (
     <div className="register-box container training-wrapper mt-4">
+    
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col md={7} lg={7} sm={12} className="mt-4">
@@ -215,12 +216,12 @@ const UserRegistration = () => {
             </Button>
           </Col>
 
-          <Col md={3} lg={3} sm={12}>
+          <Col className="mobile-img" md={3} lg={3} sm={12}>
             <img src={RegisterImg} alt="Register Img" className="img-fluid" />
           </Col>
         </Row>
       </Form>
-    </div>
+      </div>
   );
 };
 

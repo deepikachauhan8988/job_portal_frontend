@@ -10,7 +10,7 @@ const PublicSpeaking = () => {
       <div className="my-3 main-mt-0">
         <div className="text-center m-3 mobile-register">
                   <Link to="/UserRegistration">
-                  <button className="btn btn-primary rounded-pill px-4">
+                  <button className="btn btn-primary rounded-pill px-4 mobile-register-now">
                     Register Now
                   </button>
                   </Link>
@@ -221,7 +221,7 @@ const PublicSpeaking = () => {
                 </p>
                 <div className="text-center mt-3">
                   <Link to="/UserRegistration">
-                    <button className="btn btn-primary rounded-pill px-4">
+                    <button className="btn btn-primary rounded-pill px-4 ">
                       Register Now
                     </button>
                   </Link>

@@ -382,6 +382,11 @@ background-image:url(../assets/images/menu-icon.svg) !important;
 {
   border: 1px #ffffff3d solid !important;
 }
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  box-shadow: none !important;
+  outline: none !important;
+}
 
 
 
@@ -397,4 +402,12 @@ background-image:url(../assets/images/menu-icon.svg) !important;
     width: 374px !important;
 
   }
+}
+@media (max-width: 576px)  { 
+.mobile-img {
+  display:none;
+}
+.mt-4 {
+    margin-top: 8px !important;
+}
 }

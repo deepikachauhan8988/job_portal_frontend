@@ -11,7 +11,7 @@ const SelfConfidence = () => {
         <div className="training-wrapper p-4">
           <div className="text-center m-3 mobile-register">
                   <Link to="/UserRegistration">
-                  <button className="btn btn-primary rounded-pill px-4">
+                  <button className="btn btn-primary rounded-pill px-4 mobile-register-now">
                     Register Now
                   </button>
                   </Link>
