@@ -256,6 +256,17 @@ button.awc-btn-money.btn.btn-primary {
   color: #fff !important;
 }
 
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.input-group-text {
+  border-radius: 20px;
+}
+
+
 
 @media only screen and (max-width: 568px) {
   .awc-btn-bill {
@@ -351,5 +362,9 @@ button.awc-btn-money.btn.btn-primary {
 
   .dpo-data {
     padding-bottom: var(--awc-space-200) !important;
+  }
+
+  .search-bar {
+    border-radius: 12px;
   }
 }
